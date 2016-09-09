@@ -25,35 +25,30 @@ Piece::~Piece()
     cout << "Piece detruite"<<endl;
 }
 
-void
-Piece::init( int x, int y, bool white )
+void Piece::init( int x, int y, bool white )
 {
     m_x = x;
     m_y = y;
     m_white = white;
 }
 
-void
-Piece::move( int x, int y )
+void Piece::move( int x, int y )
 {
     m_x = x;
     m_y = y;
 }
 
-int
-Piece::x()
+int Piece::x() const
 {
     return m_x;
 }
 
-int
-Piece::y()
+int Piece::y() const
 {
     return m_y;
 }
 
-bool
-Piece::isWhite()
+bool Piece::isWhite()
 {
     return m_white;
 }
@@ -61,6 +56,11 @@ Piece::isWhite()
 bool Piece::isBlack()
 {
     return !Piece::isWhite();
+}
+
+Piece Piece::piecePlusForte(const Piece &p) const
+{
+    return *this;
 }
 
 void Piece::affiche()

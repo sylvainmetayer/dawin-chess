@@ -17,7 +17,7 @@ using namespace std;
 * Vérifie qu'une piece et une autre sont identiques
 *@return bool
 */
-bool is_same_piece(Piece &p, Piece &p2)
+bool is_same_piece(const Piece &p, const Piece &p2)
 {
     return p.x() == p2.x() && p.y() == p2.y();
 }
@@ -40,10 +40,8 @@ int main( int argc, char** argv )
     Joueur j2(false);
 
     //j1.affiche();
-    j2.affiche();
+    //j2.affiche();
 
-    Piece tmp = j2.get(2);
-    Piece tmp1 = j1.get(2);
-    cout<< (is_same_piece( tmp1, tmp1) ? "OUI" : "NON")<<endl;
-    cout<< (is_same_piece(tmp, tmp1) ? "OUI" : "NON")<<endl;
+    cout<< (is_same_piece( j2.get(2), j2.get(2)) ? "OUI" : "NON")<<endl;
+    cout<< (is_same_piece(j1.get(2), j2.get(2)) ? "OUI" : "NON")<<endl;
 }

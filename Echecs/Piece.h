@@ -26,12 +26,12 @@ public:
     Piece(int x, int y, bool white);
     void init( int x, int y, bool white );
     void move( int x, int y );
-    int x();
-    int y();
+    int x() const;
+    int y() const;
     bool isWhite();
     bool isBlack();
     void affiche();
-    Piece piecePlusForte(const Piece &p);
+    Piece piecePlusForte(const Piece &p) const;
 };
 
 #endif // !defined Piece_h
