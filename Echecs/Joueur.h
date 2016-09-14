@@ -1,32 +1,23 @@
-#ifndef JOUEUR_H_INCLUDED
-#define JOUEUR_H_INCLUDED
-
 /**
- * Header de Joueur.cpp
+ * Header de Joueur.cxx
  *
  * @file Joueur.h
  */
 
- #include <iostream>
- #include "Piece.h"
+#if !defined Joueur_h
+#define Joueur_h
 
- using namespace std;
+#include "Piece.h"
 
- /**
- * Declaration d'une classe modélisant une piece de jeu d'echec.
- */
-class Joueur
-{
-private:
-    Piece pieces[16];
-    bool m_white;
-    void init();
-public:
-    ~Joueur();
-    Joueur(bool white);
-    void affiche();
-    bool isWhite();
-    Piece get(int x) const;
+class Joueur {
+ private:
+  Piece m_pieces[16];
+ public:
+  Joueur();
+  ~Joueur();
+  Joueur(bool white);
+  void affiche();
+  bool isWhite();
 };
 
-#endif // JOUEUR_H_INCLUDED
+#endif

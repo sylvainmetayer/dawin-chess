@@ -1,52 +1,40 @@
-/**
- * Mise en oeuvre de Joueur.h
- *
- * @file Joueur.cpp
- */
-
-// A besoin de la declaration de la classe
+#include <iostream>
 #include "Joueur.h"
 
-Joueur::Joueur(bool white)
+using namespace std;
+
+Joueur::Joueur()
 {
-    m_white = white;
-    init();
-    cout<<"Joueur cree"<<endl;
-}
-
-void Joueur::init()
-{
-    int p = 0;
-
-    int y = (m_white)?1:8;
-    for (int x = 1; x<=8; x++)
-        pieces[p++].init(x,y,m_white);
-
-    y = (m_white)?2:7;
-    for (int x = 1; x<=8; x++)
-        pieces[p++].init(x,y,m_white);
+  cout << "Construction Joueur par defaut" << endl;
 }
 
 Joueur::~Joueur()
 {
-    cout << "Joueur detruit"<<endl;
+  cout << "Destruction Joueur" << endl;
 }
 
-bool Joueur::isWhite()
+Joueur::Joueur(bool white)
 {
-    return m_white;
+  int p=0;
+  int y=white?1:8;
+  for (int x=1;x<=8;x++)
+    m_pieces[p++].init(x,y,white);
+  y=white?2:7;
+  for (int x=1;x<=8;x++)
+    m_pieces[p++].init(x,y,white);
+  cout << "Construction Joueur specialise" << endl;
 }
 
-Piece Joueur::get(int x) const
+void
+Joueur::affiche()
 {
-    return pieces[x];
+  for (int i=0;i<16;i++)
+    m_pieces[i].affiche();
 }
 
-void Joueur::affiche()
+bool
+Joueur::isWhite()
 {
-    int limit = 16;
-    for (int i = 0; i < limit; i++)
-    {
-        pieces[i].affiche();
-    }
+  return m_pieces[0].isWhite();
 }
+

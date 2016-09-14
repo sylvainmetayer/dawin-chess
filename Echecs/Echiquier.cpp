@@ -89,23 +89,23 @@ Echiquier::enleverPiece( int x, int y )
 void
 Echiquier::affiche()
 {
-    cout << endl << "  12345678" << endl;
-    for ( int y = 1; y <= 8; ++y )
+  cout << endl << "  12345678" << endl;
+  for ( int y = 1; y <= 8; ++y )
     {
-        cout << y << " ";
-        for ( int x = 1; x <= 8; ++x )
-        {
-            char c;
-            Piece* p = getPiece( x, y );
-            if ( p == 0 )
-                c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
-            else
-                c = p->isWhite() ? 'B' : 'N';
-            cout << c;
-        }
-        cout << " " << y << endl;
+      cout << y << " ";
+      for ( int x = 1; x <= 8; ++x )
+	{
+	  char c;
+	  Piece* p = getPiece( x, y );
+	  if ( p == 0 )
+	    c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
+	  else
+	    c = p->isWhite() ? 'B' : 'N';
+	  cout << c;
+	}
+      cout << " " << y << endl;
     }
-    cout << "  12345678" << endl;
+  cout << "  12345678" << endl;
 }
 
 

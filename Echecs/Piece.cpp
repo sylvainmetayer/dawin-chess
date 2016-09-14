@@ -5,24 +5,45 @@
  */
 
 // A besoin de la declaration de la classe
+#include <iostream>
 #include "Piece.h"
+
+using namespace std;
 
 Piece::Piece()
 {
     // ne fait rien => objet instancie mais non valide.
-}
-
-Piece::Piece(int x, int y, bool white)
-{
-    m_x = x;
-    m_y = y;
-    m_white = white;
-    cout << "Une piece cree" << endl;
+    cout << "Construction Piece par defaut" << endl;
 }
 
 Piece::~Piece()
 {
-    cout << "Piece detruite"<<endl;
+    cout << "Destruction Piece" << endl;
+}
+
+Piece::Piece( int x, int y, bool white )
+{
+    m_x = x;
+    m_y = y;
+    m_white = white;
+    cout << "Construction Piece specialisee" << endl;
+}
+
+Piece::Piece(const Piece & autre)
+{
+    m_x = autre.x();
+    m_y = autre.y();
+    m_white = autre.isWhite();
+    cout << "Constructeur par copie"<<endl;
+}
+
+Piece& Piece::operator=(const Piece & autre)
+{
+    m_x = autre.x();
+    m_y = autre.y();
+    m_white = autre.isWhite();
+    cout << "Affectation piece" << endl;
+    return *this;
 }
 
 void Piece::init( int x, int y, bool white )
@@ -48,23 +69,30 @@ int Piece::y() const
     return m_y;
 }
 
-bool Piece::isWhite()
+bool Piece::isWhite() const
 {
     return m_white;
 }
 
-bool Piece::isBlack()
+bool Piece::isBlack() const
 {
-    return !Piece::isWhite();
+    return !m_white;
 }
 
-Piece Piece::piecePlusForte(const Piece &p) const
-{
-    return *this;
-}
-
-void Piece::affiche()
+void Piece::affiche() const
 {
     cout << "Piece: x=" << m_x << " y=" << m_y << " "
          << ( m_white ? "blanche" : "noire" ) << endl;
+}
+
+Piece Piece::plusforte(const Piece &p) const
+{
+    if (true)
+    {
+        return p;
+    }
+    else
+    {
+        return *this;
+    }
 }
