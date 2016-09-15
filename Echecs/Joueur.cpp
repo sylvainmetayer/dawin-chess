@@ -38,6 +38,9 @@ Joueur::~Joueur()
     cout << "Destruction Joueur" << endl;
 }
 
+/**
+*Méthode qui n'est plus utilisée
+*/
 Joueur::Joueur(bool white)
 {
     int p=0;
@@ -62,7 +65,6 @@ Joueur::isWhite()
 {
     return m_pieces[0].isWhite();
 }
-
 
 void Joueur::placerPieces(Echiquier & e)
 {

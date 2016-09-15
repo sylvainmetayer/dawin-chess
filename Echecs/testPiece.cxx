@@ -56,21 +56,43 @@ int main( int argc, char** argv )
     Echiquier e;
     e.affiche();
 
-    if (p3.mouvementValide(e, 5,5))
-        cout << "mouvement valide"<<endl;
-    else
-        cout << "mouvement invalide"<<endl;
-
-    // Piece tbl[4];
-    //Joueur jb(true);
     JoueurBlanc jb;
     JoueurNoir jn;
-    //Joueur jn(false);
+
     jb.affiche();
     jn.affiche();
 
     jb.placerPieces(e);
     jn.placerPieces(e);
+
+    Roi rb(true);
+    Roi rn(false);
+    Reine qb(true);
+    Reine qn(false);
+
+    Piece *ptr;
+    ptr = &p3;
+
+    ptr = e.enleverPiece(5,1);
+    ptr = e.enleverPiece(5,8);
+    ptr = e.enleverPiece(4,1);
+    ptr = e.enleverPiece(4,8);
+    e.placer(&rb);
+    e.placer(&rn);
+    e.placer(&qb);
+    e.placer(&qn);
+
+    if (ptr->mouvementValide(e, 5,5))
+        cout << "mouvement valide"<<endl;
+    else
+        cout << "mouvement invalide"<<endl;
+
+    ptr = &rb;
+
+    if (ptr->mouvementValide(e, 5,5))
+        cout << "mouvement valide"<<endl;
+    else
+        cout << "mouvement invalide"<<endl;
 
     e.affiche();
 }

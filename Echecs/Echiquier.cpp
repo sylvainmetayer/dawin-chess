@@ -61,7 +61,6 @@ Echiquier::placer( Piece* p )
         return false;
 }
 
-
 /**
  * Deplace une piece sur l'echiquier, des coordonnees specifiees
  * dans la piece aux coordonnees x,y.
@@ -79,7 +78,6 @@ Echiquier::deplacer( Piece* p, int x, int y )
 {
 }
 
-
 /**
  * Enleve la piece situee sur une case (qui devient vide).
  *
@@ -92,8 +90,11 @@ Echiquier::deplacer( Piece* p, int x, int y )
 Piece*
 Echiquier::enleverPiece( int x, int y )
 {
+    Piece *tmp;
+    tmp = m_cases[(x-1)+8*(y-1)];
+    m_cases[(x-1)+8*(y-1)] = NULL;
+    return tmp;
 }
-
 
 /**
  * Affiche l'echiquier avec des # pour les cases noires et . pour
@@ -114,11 +115,10 @@ Echiquier::affiche()
             if ( p == 0 )
                 c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
             else
-                c = p->isWhite() ? 'B' : 'N';
+                c = p->myChar();//p->isWhite() ? 'B' : 'N';
             cout << c;
         }
         cout << " " << y << endl;
     }
     cout << "  12345678" << endl;
 }
-

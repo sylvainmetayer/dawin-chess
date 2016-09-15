@@ -34,7 +34,24 @@ public:
     bool isBlack() const;
     void affiche() const;
     const Piece & plusforte(const Piece & autre) const;
-    bool mouvementValide(Echiquier &e, int x, int y) const;
+    virtual bool mouvementValide(Echiquier &e, int x, int y) const;
+    virtual char myChar();
+};
+
+class Roi : public Piece
+{
+    public:
+        Roi(bool white);
+        bool mouvementValide(Echiquier &e, int x, int y) const;
+        char myChar();
+};
+
+class Reine : public Piece
+{
+    public:
+        Reine(bool white);
+        bool mouvementValide(Echiquier &e, int x, int y) const;
+        char myChar();
 };
 
 #endif // !defined Piece_h

@@ -21,6 +21,17 @@ Piece::~Piece()
   cout << "Destruction Piece" << endl;
 }
 
+Roi::Roi(bool white) : Piece(5,white ? 1:8, white)
+{
+  cout << "Construction Roi specialisee" << endl;
+}
+
+Reine::Reine(bool white) : Piece(4,white ? 1:8, white)
+{
+  m_white = white;
+  cout << "Construction Reine specialisee" << endl;
+}
+
 Piece::Piece( int x, int y, bool white )
 {
   m_x = x;
@@ -112,5 +123,34 @@ Piece::plusforte(const Piece & autre) const
 
 bool Piece::mouvementValide(Echiquier &e, int x, int y) const
 {
+    cout <<"Mouvement valide"<<endl;
     return false;
+}
+
+char Piece::myChar()
+{
+    return m_white ? 'B' : 'N';
+}
+
+
+bool Roi::mouvementValide(Echiquier &e, int x, int y) const
+{
+    cout <<"Mouvement valide"<<endl;
+    return false;
+}
+
+char Roi::myChar()
+{
+    return m_white ? 'R' : 'r';
+}
+
+bool Reine::mouvementValide(Echiquier &e, int x, int y) const
+{
+    cout <<"Mouvement valide"<<endl;
+    return false;
+}
+
+char Reine::myChar()
+{
+    return m_white ? 'Q' : 'q';
 }
