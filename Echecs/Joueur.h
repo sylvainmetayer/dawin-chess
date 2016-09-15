@@ -11,7 +11,7 @@
 #include "Echiquier.h"
 
 class Joueur {
- private:
+ protected:
   Piece m_pieces[16];
  public:
   Joueur();
@@ -20,6 +20,18 @@ class Joueur {
   void affiche();
   bool isWhite();
   void placerPieces(Echiquier &e);
+};
+
+class JoueurBlanc : public Joueur
+{
+    public:
+        JoueurBlanc();
+};
+
+class JoueurNoir : public Joueur
+{
+    public:
+        JoueurNoir();
 };
 
 #endif

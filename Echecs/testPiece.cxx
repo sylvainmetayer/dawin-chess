@@ -24,41 +24,50 @@ bool compare(const Piece &p1, const Piece &p2)
 int main( int argc, char** argv )
 {
     // instancie un objet p1 de type Piece
-    //Piece p1;
+    Piece p1;
     // p1 est une piece blanche de coordonnees (3,3)
-    //p1.init( 3, 3, true );
+    p1.init( 3, 3, true );
     // instancie un objet p2 de type Piece
-    //Piece p2( 4, 4, false);
-    //if (p2.isBlack())
-    //{
-    //    cout << "Piece noire" << endl;
-    //}
-    //else
-    //{
-    //   cout << "Piece blanche" << endl;
-    //}
-    // On l'affiche
-    //p1.affiche();
-    //p2.affiche();
-    //if (compare(p1,p2))
-    //   cout << "memes positions" << endl;
-    //else
-    //   cout << "differentes positions" << endl;
-    //Piece p3 = p1;
-    //p3 =p2;
-    //p3 = p1.plusforte(p2);
+    Piece p2( 4, 4, false);
 
-    // Piece tbl[4];
-    //Joueur jb(true);
-    //Joueur jn(false);
-    //jb.affiche();
-    //jn.affiche();
+    if (p2.isBlack())
+    {
+        cout << "Piece noire" << endl;
+    }
+    else
+    {
+        cout << "Piece blanche" << endl;
+    }
+
+    // On l'affiche
+    p1.affiche();
+    p2.affiche();
+
+    if (compare(p1,p2))
+        cout << "memes positions" << endl;
+    else
+        cout << "differentes positions" << endl;
+
+    Piece p3=p1; // constructeur par copie
+    p3=p2; // affectation
+
+    p3=p1.plusforte(p2);
 
     Echiquier e;
     e.affiche();
 
-    Joueur jb(true);
-    Joueur jn(false);
+    if (p3.mouvementValide(e, 5,5))
+        cout << "mouvement valide"<<endl;
+    else
+        cout << "mouvement invalide"<<endl;
+
+    // Piece tbl[4];
+    //Joueur jb(true);
+    JoueurBlanc jb;
+    JoueurNoir jn;
+    //Joueur jn(false);
+    jb.affiche();
+    jn.affiche();
 
     jb.placerPieces(e);
     jn.placerPieces(e);

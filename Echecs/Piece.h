@@ -7,12 +7,15 @@
 #if !defined Piece_h
 #define Piece_h
 
+class Echiquier;
+// #include "Echiquier.h" problème de référence croisée
+
 /**
  * Declaration d'une classe modélisant une piece de jeu d'echec.
  */
 class Piece
 {
-private:
+protected:
     int m_x;
     int m_y;
     bool m_white;
@@ -31,6 +34,7 @@ public:
     bool isBlack() const;
     void affiche() const;
     const Piece & plusforte(const Piece & autre) const;
+    bool mouvementValide(Echiquier &e, int x, int y) const;
 };
 
 #endif // !defined Piece_h

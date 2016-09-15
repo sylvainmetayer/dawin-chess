@@ -109,3 +109,8 @@ Piece::plusforte(const Piece & autre) const
   else
     return *this;
 }
+
+bool Piece::mouvementValide(Echiquier &e, int x, int y) const
+{
+    return false;
+}

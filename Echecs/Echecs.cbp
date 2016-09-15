@@ -35,6 +35,7 @@
 		<Unit filename="Echiquier.h" />
 		<Unit filename="Joueur.cpp" />
 		<Unit filename="Joueur.h" />
+		<Unit filename="JoueurBlanc.h" />
 		<Unit filename="Piece.cpp" />
 		<Unit filename="Piece.h" />
 		<Unit filename="testPiece.cxx" />
