@@ -88,6 +88,11 @@ int main( int argc, char** argv )
         cout << "mouvement invalide"<<endl;
 
     ptr = &rb;
+    Roi *rptr = dynamic_cast<Roi *>(ptr);
+    if (rptr != NULL)
+        rptr->roque(true);
+    else
+        cout <<"Pb dynamic cast"<<endl;
 
     if (ptr->mouvementValide(e, 5,5))
         cout << "mouvement valide"<<endl;

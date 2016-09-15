@@ -44,6 +44,7 @@ class Roi : public Piece
         Roi(bool white);
         bool mouvementValide(Echiquier &e, int x, int y) const;
         char myChar();
+        void roque(bool left);
 };
 
 class Reine : public Piece

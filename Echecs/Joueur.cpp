@@ -61,9 +61,15 @@ Joueur::affiche()
 }
 
 bool
-Joueur::isWhite()
+JoueurBlanc::isWhite()
 {
-    return m_pieces[0].isWhite();
+    return true;
+}
+
+bool
+JoueurNoir::isWhite()
+{
+    return false;
 }
 
 void Joueur::placerPieces(Echiquier & e)

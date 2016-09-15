@@ -144,6 +144,11 @@ char Roi::myChar()
     return m_white ? 'R' : 'r';
 }
 
+void Roi::roque(bool left)
+{
+    cout <<"roque de" << (left ? "gauche":"droit")<< " de Roi"<<endl;
+}
+
 bool Reine::mouvementValide(Echiquier &e, int x, int y) const
 {
     cout <<"Mouvement valide"<<endl;
