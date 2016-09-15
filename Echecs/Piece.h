@@ -13,33 +13,24 @@
 class Piece
 {
 private:
-  int m_x;
-  int m_y;
-  bool m_white;
+    int m_x;
+    int m_y;
+    bool m_white;
 
 public:
-
-  // Constructeurs
-  Piece(); // défaut
-  Piece( int x, int y, bool white ); //  spécialisé
-  Piece(const Piece & autre); //  copie
-
-  // DESTRUCTEUR
-  ~Piece(); // Destructeur
-
-  // Opérateurs
-  Piece &operator=(const Piece & autre); // opérateur =
-
-  // FONCTIONS
-  void init( int x, int y, bool white );
-  void move( int x, int y );
-  int x() const;
-  int y() const;
-  bool isWhite() const;
-  bool isBlack() const;
-  void affiche() const;
-
-  Piece plusforte(const Piece & p) const;
+    Piece();
+    ~Piece();
+    Piece( int x, int y, bool white );
+    Piece(const Piece & autre);
+    Piece & operator=(const Piece & autre);
+    void init( int x, int y, bool white );
+    void move( int x, int y );
+    int x() const;
+    int y() const;
+    bool isWhite() const;
+    bool isBlack() const;
+    void affiche() const;
+    const Piece & plusforte(const Piece & autre) const;
 };
 
 #endif // !defined Piece_h

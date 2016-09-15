@@ -16,7 +16,7 @@ class Echiquier
 {
 private:
   /**
-   * Les cases de l'echiquier, rangés en ligne
+   * Les cases de l'echiquier
    */
   Piece* m_cases[ 64 ];
 
@@ -27,8 +27,6 @@ public:
    * Initialise à vide l'echiquier.
    */
   Echiquier();
-
-  ~Echiquier();
 
   /**
    * Recupere la piece situee sur une case.
@@ -86,4 +84,3 @@ public:
 };
 
 #endif // !defined Echiquier_h
-
