@@ -11,11 +11,13 @@
 #include "Echiquier.h"
 #include <vector>
 
+using namespace std;
+
 class Joueur
 {
 protected:
-    Piece m_pieces[16];
-    //vector<Piece*> m_pieces;
+    //Piece m_pieces[16];
+    vector<Piece *> m_pieces;
 public:
     Joueur();
     ~Joueur();

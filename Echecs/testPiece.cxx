@@ -84,7 +84,7 @@ int main( int argc, char** argv )
     ptr = &p3;
 
     // Suppression des pieces inutiles.
-    ptr = e.enleverPiece(5,1);
+    /*ptr = e.enleverPiece(5,1);
     ptr = e.enleverPiece(5,8);
     ptr = e.enleverPiece(4,1);
     ptr = e.enleverPiece(4,8);
@@ -109,7 +109,8 @@ int main( int argc, char** argv )
     e.placer(&fn2);
     e.placer(&fb2);
     e.placer(&tb2);
-    e.placer(&tn2);
+    e.placer(&tn2);*/
+
     if (ptr->mouvementValide(e, 5,5))
         cout << "mouvement valide"<<endl;
     else

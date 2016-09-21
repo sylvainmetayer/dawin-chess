@@ -9,28 +9,51 @@ Joueur::Joueur()
     cout << "Construction Joueur par defaut" << endl;
 }
 
-JoueurBlanc::JoueurBlanc()
+JoueurBlanc::JoueurBlanc() : Joueur(true)
 {
-    int p=0;
-    int y=1;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,true);
-    y=2;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,true);
     cout << "Construction Joueur Blanc par defaut" << endl;
 }
 
-JoueurNoir::JoueurNoir()
+JoueurNoir::JoueurNoir() : Joueur(false)
 {
-    int p=0;
-    int y=8;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,false);
-    y=7;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,false);
     cout << "Construction Joueur Noir par defaut" << endl;
+}
+
+Joueur::Joueur(bool white)
+{
+    cout << "constructeur specialise joueur" <<endl;
+
+    Roi *r = new Roi(white);
+    m_pieces.push_back(r);
+
+    // De même pour les pions, reine, cavalier, ...
+    Reine *q = new Reine(white);
+    m_pieces.push_back(q);
+
+    Tour *tg = new Tour(white, true);
+    m_pieces.push_back(tg);
+
+    Tour *td = new Tour(white, false);
+    m_pieces.push_back(td);
+
+    Cavalier *cd = new Cavalier(white, false);
+    m_pieces.push_back(cd);
+
+    Cavalier *cg = new Cavalier(white, true);
+    m_pieces.push_back(cg);
+
+    Fou *fg = new Fou(white, true);
+    m_pieces.push_back(fg);
+    Fou *fd = new Fou (white, false);
+    m_pieces.push_back(fd);
+
+    Pion *p;
+    for (int i=1; i<=8; i++)
+    {
+        p = new Pion(white, i);
+        m_pieces.push_back(p);
+    }
+
 }
 
 Joueur::~Joueur()
@@ -38,26 +61,16 @@ Joueur::~Joueur()
     cout << "Destruction Joueur" << endl;
 }
 
-/**
-*Méthode qui n'est plus utilisée
-*/
-Joueur::Joueur(bool white)
-{
-    int p=0;
-    int y=white?1:8;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,white);
-    y=white?2:7;
-    for (int x=1; x<=8; x++)
-        m_pieces[p++].init(x,y,white);
-    cout << "Construction Joueur specialise" << endl;
-}
-
 void
 Joueur::affiche()
 {
-    for (int i=0; i<16; i++)
-        m_pieces[i].affiche();
+    vector<Piece *>::iterator p = m_pieces.begin();
+
+    while (p != m_pieces.end())
+    {
+        (*p)->affiche();
+        p++;
+    }
 }
 
 bool
@@ -74,10 +87,10 @@ JoueurNoir::isWhite()
 
 void Joueur::placerPieces(Echiquier & e)
 {
-  for (int i=0;i<16;i++)
+    for (int i=0; i<16; i++)
     {
-      bool ok=e.placer(m_pieces+i/*&(m_pieces[i])*/);
-      assert(ok);
+        bool ok=e.placer(m_pieces[i]/*&(m_pieces[i])*/);
+        assert(ok);
     }
 }
 
