@@ -9,11 +9,13 @@
 
 #include "Piece.h"
 #include "Echiquier.h"
+#include <vector>
 
 class Joueur
 {
 protected:
     Piece m_pieces[16];
+    //vector<Piece*> m_pieces;
 public:
     Joueur();
     ~Joueur();

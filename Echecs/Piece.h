@@ -72,4 +72,22 @@ class Reine : public Fou, public Tour
         char myChar();
 };
 
+
+class Cavalier : public Piece
+{
+ public:
+  Cavalier(bool white, bool left);
+  bool mouvementValide(Echiquier & e, int x, int y );
+  char myChar();
+};
+
+class Pion : public Piece
+{
+ public:
+  Pion(bool white, int p);
+  bool mouvementValide(Echiquier & e, int x, int y );
+  char myChar();
+};
+
+
 #endif // !defined Piece_h
