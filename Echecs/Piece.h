@@ -51,7 +51,7 @@ class Roi : public Piece
 class Tour : virtual public Piece
 {
     public:
-        Tour(bool white);
+        Tour(bool white, bool left);
         bool mouvementValide(Echiquier &e, int x, int y) const;
         char myChar();
 };
@@ -59,7 +59,7 @@ class Tour : virtual public Piece
 class Fou : virtual public Piece
 {
     public:
-        Fou(bool white);
+        Fou(bool white, bool left);
         bool mouvementValide(Echiquier &e, int x, int y) const;
         char myChar();
 };

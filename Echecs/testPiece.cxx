@@ -70,10 +70,15 @@ int main( int argc, char** argv )
     Reine qb(true);
     Reine qn(false);
 
-    Fou fn(false);
-    Fou fb(true);
-    Tour tb(true);
-    Tour tn(false);
+    Fou fn(false, true);
+    Fou fb(true, true);
+    Tour tb(true, true);
+    Tour tn(false, true);
+
+    Fou fn2(false, false);
+    Fou fb2(true, false);
+    Tour tb2(true, false);
+    Tour tn2(false, false);
 
     Piece *ptr;
     ptr = &p3;
@@ -87,6 +92,10 @@ int main( int argc, char** argv )
     ptr = e.enleverPiece(3,8);
     ptr = e.enleverPiece(6,1);
     ptr = e.enleverPiece(6,8);
+    ptr = e.enleverPiece(1,8);
+    ptr = e.enleverPiece(8,8);
+    ptr = e.enleverPiece(1,1);
+    ptr = e.enleverPiece(8,1);
 
     // Placement des pièces des joueurs.
     e.placer(&rb);
@@ -97,7 +106,10 @@ int main( int argc, char** argv )
     e.placer(&fb);
     e.placer(&tb);
     e.placer(&tn);
-
+    e.placer(&fn2);
+    e.placer(&fb2);
+    e.placer(&tb2);
+    e.placer(&tn2);
     if (ptr->mouvementValide(e, 5,5))
         cout << "mouvement valide"<<endl;
     else

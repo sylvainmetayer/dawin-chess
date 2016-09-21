@@ -26,18 +26,18 @@ Roi::Roi(bool white) : Piece(5,white ? 1:8, white)
     cout << "Construction Roi specialisee" << endl;
 }
 
-Fou::Fou(bool white) : Piece(6,white ? 1:8, white)
+Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white)
 {
     cout << "Construction Fou specialisee" << endl;
 }
 
-Tour::Tour(bool white) : Piece(3,white ? 1:8, white)
+Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
 {
     cout << "Construction Tour specialisee" << endl;
 }
 
 Reine::Reine(bool white) : Piece(4, (white?1:8), white ),
-                Fou(white), Tour(white)
+                Fou(white, true), Tour(white, true)
 {
     m_white = white;
     cout << "Construction Reine specialisee" << endl;
