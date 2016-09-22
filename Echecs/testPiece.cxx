@@ -23,110 +23,18 @@ bool compare(const Piece &p1, const Piece &p2)
  */
 int main( int argc, char** argv )
 {
-    // instancie un objet p1 de type Piece
-    Piece p1;
-    // p1 est une piece blanche de coordonnees (3,3)
-    p1.init( 3, 3, true );
-    // instancie un objet p2 de type Piece
-    Piece p2( 4, 4, false);
-
-    if (p2.isBlack())
-    {
-        cout << "Piece noire" << endl;
-    }
-    else
-    {
-        cout << "Piece blanche" << endl;
-    }
-
-    // On l'affiche
-    p1.affiche();
-    p2.affiche();
-
-    if (compare(p1,p2))
-        cout << "memes positions" << endl;
-    else
-        cout << "differentes positions" << endl;
-
-    Piece p3=p1; // constructeur par copie
-    p3=p2; // affectation
-
-    p3=p1.plusforte(p2);
-
+    // Création de l'échiquier
     Echiquier e;
-    e.affiche();
+    e.affiche(); // Le plateau est vide
 
+    // Création des joueurs et des pièces associées
     JoueurBlanc jb;
     JoueurNoir jn;
 
-    jb.affiche();
-    jn.affiche();
-
+    // On place les pièces des joueurs sur l'échiquier
     jb.placerPieces(e);
     jn.placerPieces(e);
 
-    Roi rb(true);
-    Roi rn(false);
-    Reine qb(true);
-    Reine qn(false);
-
-    Fou fn(false, true);
-    Fou fb(true, true);
-    Tour tb(true, true);
-    Tour tn(false, true);
-
-    Fou fn2(false, false);
-    Fou fb2(true, false);
-    Tour tb2(true, false);
-    Tour tn2(false, false);
-
-    Piece *ptr;
-    ptr = &p3;
-
-    // Suppression des pieces inutiles.
-    /*ptr = e.enleverPiece(5,1);
-    ptr = e.enleverPiece(5,8);
-    ptr = e.enleverPiece(4,1);
-    ptr = e.enleverPiece(4,8);
-    ptr = e.enleverPiece(3,1);
-    ptr = e.enleverPiece(3,8);
-    ptr = e.enleverPiece(6,1);
-    ptr = e.enleverPiece(6,8);
-    ptr = e.enleverPiece(1,8);
-    ptr = e.enleverPiece(8,8);
-    ptr = e.enleverPiece(1,1);
-    ptr = e.enleverPiece(8,1);
-
-    // Placement des pièces des joueurs.
-    e.placer(&rb);
-    e.placer(&rn);
-    e.placer(&qb);
-    e.placer(&qn);
-    e.placer(&fn);
-    e.placer(&fb);
-    e.placer(&tb);
-    e.placer(&tn);
-    e.placer(&fn2);
-    e.placer(&fb2);
-    e.placer(&tb2);
-    e.placer(&tn2);*/
-
-    if (ptr->mouvementValide(e, 5,5))
-        cout << "mouvement valide"<<endl;
-    else
-        cout << "mouvement invalide"<<endl;
-
-    ptr = &rb;
-    Roi *rptr = dynamic_cast<Roi *>(ptr);
-    if (rptr != NULL)
-        rptr->roque(true);
-    else
-        cout <<"Pb dynamic cast"<<endl;
-
-    if (ptr->mouvementValide(e, 5,5))
-        cout << "mouvement valide"<<endl;
-    else
-        cout << "mouvement invalide"<<endl;
-
+    // Début du jeu
     e.affiche();
 }

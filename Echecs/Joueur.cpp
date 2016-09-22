@@ -53,16 +53,15 @@ Joueur::Joueur(bool white)
         p = new Pion(white, i);
         m_pieces.push_back(p);
     }
-
 }
 
 Joueur::~Joueur()
 {
+    // TODO penser à gérer les delete
     cout << "Destruction Joueur" << endl;
 }
 
-void
-Joueur::affiche()
+void Joueur::affiche()
 {
     vector<Piece *>::iterator p = m_pieces.begin();
 
@@ -73,14 +72,12 @@ Joueur::affiche()
     }
 }
 
-bool
-JoueurBlanc::isWhite()
+bool JoueurBlanc::isWhite()
 {
     return true;
 }
 
-bool
-JoueurNoir::isWhite()
+bool JoueurNoir::isWhite()
 {
     return false;
 }
@@ -89,7 +86,7 @@ void Joueur::placerPieces(Echiquier & e)
 {
     for (int i=0; i<16; i++)
     {
-        bool ok=e.placer(m_pieces[i]/*&(m_pieces[i])*/);
+        bool ok=e.placer(m_pieces[i]);
         assert(ok);
     }
 }
