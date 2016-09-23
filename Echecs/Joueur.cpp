@@ -91,3 +91,12 @@ void Joueur::placerPieces(Echiquier & e)
     }
 }
 
+void JoueurBlanc::jouer(Echiquier &e)
+{
+
+}
+
+void JoueurNoir::jouer(Echiquier &e)
+{
+
+}

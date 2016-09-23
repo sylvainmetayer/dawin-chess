@@ -37,4 +37,12 @@ int main( int argc, char** argv )
 
     // Début du jeu
     e.affiche();
+
+    bool tourJb = true;
+    while (true) // Fin de tour à gérer TODO
+    {
+        cout << "Debut tour joueur " << (tourJb ? "blanc" : "noir") << endl;
+        tourJb ? jb.jouer(e) : jn.jouer(e);
+        tourJb = !tourJb;
+    }
 }

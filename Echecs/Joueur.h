@@ -15,30 +15,32 @@ using namespace std;
 
 class Joueur
 {
-protected:
-    //Piece m_pieces[16];
-    vector<Piece *> m_pieces;
-public:
-    Joueur();
-    ~Joueur();
-    Joueur(bool white);
-    void affiche();
-    virtual bool isWhite()=0;
-    void placerPieces(Echiquier &e);
+    protected:
+        //Piece m_pieces[16];
+        vector<Piece *> m_pieces;
+    public:
+        Joueur();
+        ~Joueur();
+        Joueur(bool white);
+        void affiche();
+        virtual bool isWhite()=0;
+        void placerPieces(Echiquier &e);
 };
 
 class JoueurBlanc : public Joueur
 {
-public:
-    JoueurBlanc();
-    bool isWhite();
+    public:
+        JoueurBlanc();
+        bool isWhite();
+        void jouer(Echiquier &e);
 };
 
 class JoueurNoir : public Joueur
 {
-public:
-    JoueurNoir();
-    bool isWhite();
+    public:
+        JoueurNoir();
+        bool isWhite();
+        void jouer(Echiquier &e);
 };
 
 #endif

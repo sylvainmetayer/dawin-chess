@@ -40,53 +40,53 @@ public:
 
 class Roi : public Piece
 {
-    public:
-        Roi(bool white);
-        bool mouvementValide(Echiquier &e, int x, int y) const;
-        char myChar();
-        void roque(bool left);
+public:
+    Roi(bool white);
+    bool mouvementValide(Echiquier &e, int x, int y) const;
+    char myChar();
+    void roque(bool left);
 };
 
 
 class Tour : virtual public Piece
 {
-    public:
-        Tour(bool white, bool left);
-        bool mouvementValide(Echiquier &e, int x, int y) const;
-        char myChar();
+public:
+    Tour(bool white, bool left);
+    bool mouvementValide(Echiquier &e, int x, int y) const;
+    char myChar();
 };
 
 class Fou : virtual public Piece
 {
-    public:
-        Fou(bool white, bool left);
-        bool mouvementValide(Echiquier &e, int x, int y) const;
-        char myChar();
+public:
+    Fou(bool white, bool left);
+    bool mouvementValide(Echiquier &e, int x, int y) const;
+    char myChar();
 };
 
 class Reine : public Fou, public Tour
 {
-    public:
-        Reine(bool white);
-        bool mouvementValide(Echiquier &e, int x, int y) const;
-        char myChar();
+public:
+    Reine(bool white);
+    bool mouvementValide(Echiquier &e, int x, int y) const;
+    char myChar();
 };
 
 
 class Cavalier : public Piece
 {
- public:
-  Cavalier(bool white, bool left);
-  bool mouvementValide(Echiquier & e, int x, int y );
-  char myChar();
+public:
+    Cavalier(bool white, bool left);
+    bool mouvementValide(Echiquier & e, int x, int y );
+    char myChar();
 };
 
 class Pion : public Piece
 {
- public:
-  Pion(bool white, int p);
-  bool mouvementValide(Echiquier & e, int x, int y );
-  char myChar();
+public:
+    Pion(bool white, int p);
+    bool mouvementValide(Echiquier & e, int x, int y );
+    char myChar();
 };
 
 
