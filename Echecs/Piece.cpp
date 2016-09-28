@@ -203,28 +203,24 @@ char Fou::myChar()
     return m_white ? 'F' : 'f';
 }
 
-bool
-Cavalier::mouvementValide(Echiquier & e, int x, int y)
+bool Cavalier::mouvementValide(Echiquier & e, int x, int y)
 {
   cout << "mouvementValide de Cavalier" << endl;
   return false;
 }
 
-char
-Cavalier::myChar()
+char Cavalier::myChar()
 {
   return m_white?'C':'c';
 }
 
-bool
-Pion::mouvementValide(Echiquier & e, int x, int y)
+bool Pion::mouvementValide(Echiquier & e, int x, int y)
 {
   cout << "mouvementValide de Pion" << endl;
   return false;
 }
 
-char
-Pion::myChar()
+char Pion::myChar()
 {
   return m_white?'P':'p';
 }

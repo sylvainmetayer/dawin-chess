@@ -37,23 +37,30 @@
 
 1474548335 /mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Piece.h
 
-1474548519 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Joueur.cpp
+1475074340 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Joueur.cpp
 	<iostream>
 	"Joueur.h"
 	<assert.h>
 
-1474548508 /mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Joueur.h
+1475073664 /mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Joueur.h
 	"Piece.h"
 	"Echiquier.h"
 	<vector>
 
-1474547797 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Piece.cpp
+1475071369 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/Piece.cpp
 	<iostream>
 	"Piece.h"
 
-1474548596 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/testPiece.cxx
+1475073292 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/testPiece.cxx
 	<iostream>
 	"Piece.h"
 	"Joueur.h"
 	"Echiquier.h"
+
+1475074339 source:/mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/JoueurBlanc.cpp
+	"JoueurBlanc.h"
+
+1475074371 /mnt/iut/smetayer/Documents/Prog_Objet/STAGE_PROG_SIL/TP/Echecs/JoueurBlanc.h
+	"Joueur.h"
+	<iostream>
 

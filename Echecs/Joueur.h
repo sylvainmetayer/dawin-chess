@@ -25,14 +25,7 @@ class Joueur
         void affiche();
         virtual bool isWhite()=0;
         void placerPieces(Echiquier &e);
-};
-
-class JoueurBlanc : public Joueur
-{
-    public:
-        JoueurBlanc();
-        bool isWhite();
-        void jouer(Echiquier &e);
+        virtual void jouer(Echiquier &e, int x, int y)=0;
 };
 
 class JoueurNoir : public Joueur
@@ -40,7 +33,7 @@ class JoueurNoir : public Joueur
     public:
         JoueurNoir();
         bool isWhite();
-        void jouer(Echiquier &e);
+        void jouer(Echiquier &e, int x, int y);
 };
 
 #endif

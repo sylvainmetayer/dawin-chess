@@ -9,10 +9,6 @@ Joueur::Joueur()
     cout << "Construction Joueur par defaut" << endl;
 }
 
-JoueurBlanc::JoueurBlanc() : Joueur(true)
-{
-    cout << "Construction Joueur Blanc par defaut" << endl;
-}
 
 JoueurNoir::JoueurNoir() : Joueur(false)
 {
@@ -72,17 +68,14 @@ void Joueur::affiche()
     }
 }
 
-bool JoueurBlanc::isWhite()
-{
-    return true;
-}
+
 
 bool JoueurNoir::isWhite()
 {
     return false;
 }
 
-void Joueur::placerPieces(Echiquier & e)
+void Joueur::placerPieces(Echiquier &e)
 {
     for (int i=0; i<16; i++)
     {
@@ -91,12 +84,8 @@ void Joueur::placerPieces(Echiquier & e)
     }
 }
 
-void JoueurBlanc::jouer(Echiquier &e)
-{
 
-}
-
-void JoueurNoir::jouer(Echiquier &e)
+void JoueurNoir::jouer(Echiquier &e, int x, int y)
 {
 
 }
