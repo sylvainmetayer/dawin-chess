@@ -43,6 +43,14 @@ int main( int argc, char** argv )
     // Début du jeu
     e.affiche();
 
+    Piece *reine = e.getPiece(4,1);
+    reine->affiche();
+
+    bool test = reine->mouvementValide(e, 3,2);
+    bool fail = reine->mouvementValide(e, 2,3);
+
+    cout << (fail == false ? "FAUX" : "VRAI")<< " "<<  (test == true ? "VRAI" : "FAUX") << endl;
+
     bool tourJb = true;
     int position_x, postion_y;
     while (true) // Fin de tour à gérer TODO

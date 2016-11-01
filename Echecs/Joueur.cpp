@@ -16,12 +16,6 @@ Joueur::Joueur()
     cout << "Construction Joueur par defaut" << endl;
 }
 
-
-JoueurNoir::JoueurNoir() : Joueur(false)
-{
-    cout << "Construction Joueur Noir par defaut" << endl;
-}
-
 Joueur::Joueur(bool white)
 {
     cout << "constructeur specialise joueur" <<endl;
@@ -75,24 +69,3 @@ void Joueur::affiche()
     }
 }
 
-
-
-bool JoueurNoir::isWhite()
-{
-    return false;
-}
-
-void Joueur::placerPieces(Echiquier &e)
-{
-    for (int i=0; i<16; i++)
-    {
-        bool ok=e.placer(m_pieces[i]);
-        assert(ok);
-    }
-}
-
-
-void JoueurNoir::jouer(Echiquier &e, int x, int y)
-{
-
-}

@@ -41,6 +41,8 @@
 		<Unit filename="Joueur.h" />
 		<Unit filename="JoueurBlanc.cpp" />
 		<Unit filename="JoueurBlanc.h" />
+		<Unit filename="JoueurNoir.cpp" />
+		<Unit filename="JoueurNoir.h" />
 		<Unit filename="Makefile" />
 		<Unit filename="Piece.cpp" />
 		<Unit filename="Piece.h" />

@@ -1,20 +1,22 @@
-/**
- * Mise en oeuvre de Cavalier.h
- *
- * @file Cavalier.cpp
- */
-
-// A besoin de la declaration de la classe
 #include <iostream>
+#include <stdlib.h>
+#include <assert.h>
+
 #include "Cavalier.h"
 
 using namespace std;
 
-
-bool Cavalier::mouvementValide(Echiquier & e, int x, int y)
+bool Cavalier::mouvementValide(Echiquier & e, int x, int y) const
 {
-  cout << "mouvementValide de Cavalier" << endl;
-  return false;
+    assert(x<9 && x>0 && y<9 && y>0);
+
+    int diffX = abs(this->m_x - x);
+    int diffY = abs(this->m_y - y);
+
+    if ((diffX == 2 && diffY == 1)||(diffY == 2 && diffX == 1))
+        return true;
+
+    return false;
 }
 
 char Cavalier::myChar()

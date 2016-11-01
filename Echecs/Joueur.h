@@ -28,12 +28,4 @@ class Joueur
         virtual void jouer(Echiquier &e, int x, int y)=0;
 };
 
-class JoueurNoir : public Joueur
-{
-    public:
-        JoueurNoir();
-        bool isWhite();
-        void jouer(Echiquier &e, int x, int y);
-};
-
 #endif

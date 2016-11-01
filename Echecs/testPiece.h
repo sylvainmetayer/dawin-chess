@@ -4,9 +4,12 @@
 
 // Utile pour l'affichage
 #include <iostream>
+#include <stdlib.h>
+
+#include "Echiquier.h"
 
 #include "Joueur.h"
-#include "Echiquier.h"
+#include "JoueurNoir.h"
 #include "JoueurBlanc.h"
 
 #include "Piece.h"
