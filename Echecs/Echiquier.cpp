@@ -155,7 +155,7 @@ void
 Echiquier::prise(Piece &p, int x, int y) {
 
     Piece* p1 = getPiece(x, y);
-    if(getPiece(&p, x, y) == true) {
+    if(getPiece(x, y) != 0) {
         enleverPiece(x,y);
         cout << "La piece en (" << x << "," << y<< ") a ete supprime" << endl;
     }
