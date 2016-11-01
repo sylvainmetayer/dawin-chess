@@ -122,3 +122,41 @@ Echiquier::affiche()
     }
     cout << "  12345678" << endl;
 }
+
+/**
+* Permet de savoir si la pièce peux être
+* prise ou non par une autre piece
+**/
+bool
+Echiquier::prisePossible(Piece &p, int x, int y) {
+
+    // Récupération de la pièce à la position données
+    Piece* p1 = getPiece(x, y);
+
+    if(p1 == 0) {
+            cout << "Aucune piece sur cette case" << endl;
+        return false;
+    }
+    if(p1->isWhite()==true && p.isWhite()==true) {
+        cout << "Ceci est une de vos pieces ! Attention !" << endl;
+        return false;
+    }
+    else {
+        cout << "Prise possible" << endl;
+        return true;
+    }
+}
+
+/**
+ * Permet la prise d'une piece par une autre,
+ * la supprimant ainsi du plateau
+ */
+void
+Echiquier::prise(Piece &p, int x, int y) {
+
+    Piece* p1 = getPiece(x, y);
+    if(getPiece(&p, x, y) == true) {
+        enleverPiece(x,y);
+        cout << "La piece en (" << x << "," << y<< ") a ete supprime" << endl;
+    }
+}
