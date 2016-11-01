@@ -2,6 +2,13 @@
 #include "Joueur.h"
 #include <assert.h>
 
+#include "Roi.h"
+#include "Reine.h"
+#include "Tour.h"
+#include "Fou.h"
+#include "Cavalier.h"
+#include "Pion.h"
+
 using namespace std;
 
 Joueur::Joueur()

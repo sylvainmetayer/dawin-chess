@@ -4,12 +4,7 @@
  * @file testPiece.cxx
  */
 
-// Utile pour l'affichage
-#include <iostream>
-#include "Piece.h"
-#include "Joueur.h"
-#include "Echiquier.h"
-#include "JoueurBlanc.h"
+#include "testPiece.h"
 
 // Pour utiliser les flux de iostream sans mettre "std::" tout le temps.
 using namespace std;

@@ -21,39 +21,6 @@ Piece::~Piece()
     cout << "Destruction Piece" << endl;
 }
 
-Roi::Roi(bool white) : Piece(5,white ? 1:8, white)
-{
-    cout << "Construction Roi specialisee" << endl;
-}
-
-Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white)
-{
-    cout << "Construction Fou specialisee" << endl;
-}
-
-Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
-{
-    cout << "Construction Tour specialisee" << endl;
-}
-
-Reine::Reine(bool white) : Piece(4, (white?1:8), white ),
-                Fou(white, true), Tour(white, true)
-{
-    m_white = white;
-    cout << "Construction Reine specialisee" << endl;
-}
-
-Cavalier::Cavalier( bool white, bool left ) : Piece((left)?2:7,(white)?1:8,white)
-{
-  cout << "Construction Cavalier specialisee" << endl;
-}
-
-Pion::Pion( bool white, int p ) : Piece(p,(white)?2:7,white)
-{
-  cout << "Construction Pion specialisee" << endl;
-}
-
-
 Piece::Piece( int x, int y, bool white )
 {
     m_x = x;
@@ -152,75 +119,4 @@ bool Piece::mouvementValide(Echiquier &e, int x, int y) const
 char Piece::myChar()
 {
     return m_white ? 'B' : 'N';
-}
-
-
-bool Roi::mouvementValide(Echiquier &e, int x, int y) const
-{
-    cout <<"Mouvement valide"<<endl;
-    return false;
-}
-
-char Roi::myChar()
-{
-    return m_white ? 'R' : 'r';
-}
-
-void Roi::roque(bool left)
-{
-    cout <<"roque de" << (left ? "gauche":"droit")<< " de Roi"<<endl;
-}
-
-bool Reine::mouvementValide(Echiquier &e, int x, int y) const
-{
-    return Fou::mouvementValide(e,x,y) || Tour::mouvementValide(e,x,y);
-}
-
-char Reine::myChar()
-{
-    return m_white ? 'Q' : 'q';
-}
-
-bool Tour::mouvementValide(Echiquier &e, int x, int y) const
-{
-    cout <<"Mouvement valide"<<endl;
-    return false;
-}
-
-char Tour::myChar()
-{
-    return m_white ? 'T' : 't';
-}
-
-bool Fou::mouvementValide(Echiquier &e, int x, int y) const
-{
-    cout <<"Mouvement valide"<<endl;
-    return false;
-}
-
-char Fou::myChar()
-{
-    return m_white ? 'F' : 'f';
-}
-
-bool Cavalier::mouvementValide(Echiquier & e, int x, int y)
-{
-  cout << "mouvementValide de Cavalier" << endl;
-  return false;
-}
-
-char Cavalier::myChar()
-{
-  return m_white?'C':'c';
-}
-
-bool Pion::mouvementValide(Echiquier & e, int x, int y)
-{
-  cout << "mouvementValide de Pion" << endl;
-  return false;
-}
-
-char Pion::myChar()
-{
-  return m_white?'P':'p';
 }
