@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool Cavalier::mouvementValide(Echiquier & e, int x, int y) const
+bool Cavalier::mouvementValide(Echiquier & e, int x, int y)
 {
     assert(x<9 && x>0 && y<9 && y>0);
 

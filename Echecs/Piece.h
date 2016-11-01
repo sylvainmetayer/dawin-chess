@@ -34,7 +34,7 @@ public:
     bool isBlack() const;
     void affiche() const;
     const Piece & plusforte(const Piece & autre) const;
-    virtual bool mouvementValide(Echiquier &e, int x, int y) const;
+    virtual bool mouvementValide(Echiquier &e, int x, int y);
     virtual char myChar();
 };
 

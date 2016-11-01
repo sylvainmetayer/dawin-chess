@@ -19,7 +19,7 @@ Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
     cout << "Construction Tour specialisee" << endl;
 }
 
-bool Tour::mouvementValide(Echiquier &e, int x, int y) const
+bool Tour::mouvementValide(Echiquier &e, int x, int y)
 {
     assert(x<9 && x>0 && y<9 && y>0);
 

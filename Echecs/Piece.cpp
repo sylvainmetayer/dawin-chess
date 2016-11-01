@@ -110,7 +110,7 @@ Piece::plusforte(const Piece & autre) const
         return *this;
 }
 
-bool Piece::mouvementValide(Echiquier &e, int x, int y) const
+bool Piece::mouvementValide(Echiquier &e, int x, int y)
 {
     cout <<"Mouvement valide"<<endl;
     return false;

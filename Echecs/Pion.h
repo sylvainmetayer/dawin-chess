@@ -8,6 +8,8 @@ class Echiquier;
 
 class Pion : public Piece
 {
+protected:
+    bool first_move;
 public:
     Pion(bool white, int p);
     bool mouvementValide(Echiquier & e, int x, int y );

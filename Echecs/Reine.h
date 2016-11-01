@@ -12,7 +12,7 @@ class Reine : public Fou, public Tour
 {
 public:
     Reine(bool white);
-    bool mouvementValide(Echiquier &e, int x, int y) const;
+    bool mouvementValide(Echiquier &e, int x, int y);
     char myChar();
 };
 

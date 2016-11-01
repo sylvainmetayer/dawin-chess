@@ -10,7 +10,7 @@ class Roi : public Piece
 {
 public:
     Roi(bool white);
-    bool mouvementValide(Echiquier &e, int x, int y) const;
+    bool mouvementValide(Echiquier &e, int x, int y);
     char myChar();
     void roque(bool left);
 };

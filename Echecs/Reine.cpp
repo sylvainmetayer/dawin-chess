@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool Reine::mouvementValide(Echiquier &e, int x, int y) const
+bool Reine::mouvementValide(Echiquier &e, int x, int y)
 {
     return Fou::mouvementValide(e,x,y) || Tour::mouvementValide(e,x,y);
 }

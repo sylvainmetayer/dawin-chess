@@ -10,7 +10,7 @@ class Cavalier : public Piece
 {
 public:
     Cavalier(bool white, bool left);
-    bool mouvementValide(Echiquier & e, int x, int y ) const;
+    bool mouvementValide(Echiquier & e, int x, int y );
     char myChar();
 };
 

@@ -43,11 +43,11 @@ int main( int argc, char** argv )
     // Début du jeu
     e.affiche();
 
-    Piece *reine = e.getPiece(4,1);
-    reine->affiche();
+    Piece *pion = e.getPiece(1,2);
+    pion->affiche();
 
-    bool test = reine->mouvementValide(e, 3,2);
-    bool fail = reine->mouvementValide(e, 2,3);
+    bool test = pion->mouvementValide(e, 1,4);
+    bool fail = pion->mouvementValide(e, 1,3);
 
     cout << (fail == false ? "FAUX" : "VRAI")<< " "<<  (test == true ? "VRAI" : "FAUX") << endl;
 
