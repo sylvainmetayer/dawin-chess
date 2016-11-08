@@ -16,7 +16,7 @@ using namespace std;
 Pion::Pion( bool white, int p ) : Piece(p,(white)?2:7,white)
 {
     this->first_move = true;
-  cout << "Construction Pion specialisee" << endl;
+    //cout << "Construction Pion specialisee" << endl;
 }
 
 // Suppression du const pour pouvoir modifier le pion au premier déplacement.

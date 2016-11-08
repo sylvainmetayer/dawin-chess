@@ -8,7 +8,7 @@ using namespace std;
 
 Roi::Roi(bool white) : Piece(5,white ? 1:8, white)
 {
-    cout << "Construction Roi specialisee" << endl;
+    //cout << "Construction Roi specialisee" << endl;
 }
 
 bool Roi::mouvementValide(Echiquier &e, int x, int y)

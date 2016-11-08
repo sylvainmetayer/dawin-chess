@@ -24,5 +24,5 @@ Reine::Reine(bool white) : Piece(4, (white?1:8), white ),
                 Fou(white, true), Tour(white, true)
 {
     m_white = white;
-    cout << "Construction Reine specialisee" << endl;
+    //cout << "Construction Reine specialisee" << endl;
 }

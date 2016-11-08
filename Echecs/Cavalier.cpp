@@ -26,5 +26,5 @@ char Cavalier::myChar()
 
 Cavalier::Cavalier( bool white, bool left ) : Piece((left)?2:7,(white)?1:8,white)
 {
-  cout << "Construction Cavalier specialisee" << endl;
+  //cout << "Construction Cavalier specialisee" << endl;
 }

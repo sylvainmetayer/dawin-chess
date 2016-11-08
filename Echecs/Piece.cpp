@@ -13,7 +13,7 @@ using namespace std;
 Piece::Piece()
 {
     // ne fait rien => objet instancie mais non valide.
-    cout << "Construction Piece par defaut" << endl;
+    //cout << "Construction Piece par defaut" << endl;
 }
 
 Piece::~Piece()
@@ -26,7 +26,7 @@ Piece::Piece( int x, int y, bool white )
     m_x = x;
     m_y = y;
     m_white = white;
-    cout << "Construction Piece specialisee" << endl;
+    //cout << "Construction Piece specialisee" << endl;
 }
 
 Piece::Piece( const Piece & autre)
@@ -34,7 +34,7 @@ Piece::Piece( const Piece & autre)
     m_x = autre.m_x;
     m_y = autre.m_y;
     m_white = autre.m_white;
-    cout << "Construction Piece par copie" << endl;
+    //cout << "Construction Piece par copie" << endl;
 }
 
 Piece &
@@ -112,7 +112,7 @@ Piece::plusforte(const Piece & autre) const
 
 bool Piece::mouvementValide(Echiquier &e, int x, int y)
 {
-    cout <<"Mouvement valide"<<endl;
+    cout <<"Piece mouvement valide non specialise "<<endl;
     return false;
 }
 

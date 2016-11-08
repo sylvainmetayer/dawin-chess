@@ -16,7 +16,7 @@ using namespace std;
 
 Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
 {
-    cout << "Construction Tour specialisee" << endl;
+    //cout << "Construction Tour specialisee" << endl;
 }
 
 bool Tour::mouvementValide(Echiquier &e, int x, int y)

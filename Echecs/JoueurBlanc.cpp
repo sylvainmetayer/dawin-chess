@@ -4,7 +4,7 @@ using namespace std;
 
 JoueurBlanc::JoueurBlanc() : Joueur(true)
 {
-    cout << "Construction Joueur Blanc par defaut" << endl;
+    //cout << "Construction Joueur Blanc par defaut" << endl;
 }
 
 bool JoueurBlanc::isWhite()

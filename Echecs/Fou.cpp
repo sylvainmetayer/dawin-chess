@@ -16,7 +16,7 @@ using namespace std;
 
 Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white)
 {
-    cout << "Construction Fou specialisee" << endl;
+    //cout << "Construction Fou specialisee" << endl;
 }
 
 bool Fou::mouvementValide(Echiquier &e, int x, int y)

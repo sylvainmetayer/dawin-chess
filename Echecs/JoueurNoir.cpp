@@ -14,7 +14,7 @@ using namespace std;
 
 JoueurNoir::JoueurNoir() : Joueur(false)
 {
-    cout << "Construction Joueur Noir par defaut" << endl;
+    //cout << "Construction Joueur Noir par defaut" << endl;
 }
 
 

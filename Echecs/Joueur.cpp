@@ -13,12 +13,12 @@ using namespace std;
 
 Joueur::Joueur()
 {
-    cout << "Construction Joueur par defaut" << endl;
+    //cout << "Construction Joueur par defaut" << endl;
 }
 
 Joueur::Joueur(bool white)
 {
-    cout << "constructeur specialise joueur" <<endl;
+    //cout << "constructeur specialise joueur" <<endl;
 
     Roi *r = new Roi(white);
     m_pieces.push_back(r);
