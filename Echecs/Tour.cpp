@@ -59,7 +59,7 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     bool depOK = true;
 
     if(_x == x && _y < y) {
-        for(i = _x; i < 9; i++) {
+        for(i = (_y + 1) ; i < 9; i++) {
             if(e.getPiece(x, i) != 0) {
                 depOK = false;
                 break;
@@ -68,7 +68,7 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_x == x && _y > y) {
-        for(i = _x; i > 9; i--) {
+        for(i = (_y - 1); i > 0; i--) {
             if(e.getPiece(x, i) != 0) {
                 depOK = false;
                 break;
@@ -77,7 +77,7 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_y == y && _x < x) {
-        for(i = _y; i < 9; i++) {
+        for(i = (_x + 1); i < 9; i++) {
             if(e.getPiece(i, y) != 0) {
                 depOK = false;
                 break;
@@ -86,7 +86,7 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_y == y && _x > x) {
-        for(i = _y; i > 9; i++) {
+        for(i = (_x - 1); i > 0; i--) {
             if(e.getPiece(i, y) != 0) {
                 depOK = false;
                 break;
