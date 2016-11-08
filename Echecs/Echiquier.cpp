@@ -35,7 +35,9 @@ Echiquier::Echiquier()
 Piece*
 Echiquier::getPiece( int x, int y )
 {
-    assert(x<9 && x>0 && y<9 && y>0);
+    if ((x<9 && x>0 && y<9 && y>0) == false) {
+        return NULL;
+    }
     return m_cases[(x-1)+8*(y-1)];
 }
 
@@ -76,7 +78,7 @@ Echiquier::placer( Piece* p )
 bool
 Echiquier::deplacer( Piece* p, int x, int y )
 {
-
+    return true;
     // TODO Lorsque cela sera fait, decommenter
     //if (!piece->deplacementOK(this,x,y)) {
     //    cout << "Cette piece ne peut pas se déplacer à cet endroit !"<< endl;

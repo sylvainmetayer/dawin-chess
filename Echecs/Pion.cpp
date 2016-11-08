@@ -22,7 +22,9 @@ Pion::Pion( bool white, int p ) : Piece(p,(white)?2:7,white)
 // Suppression du const pour pouvoir modifier le pion au premier déplacement.
 bool Pion::mouvementValide(Echiquier & e, int x, int y)
 {
-    assert(x<9 && x>0 && y<9 && y>0);
+    if ((x<9 && x>0 && y<9 && y>0) == false) {
+        return false;
+    }
 
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);

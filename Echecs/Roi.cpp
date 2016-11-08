@@ -13,7 +13,9 @@ Roi::Roi(bool white) : Piece(5,white ? 1:8, white)
 
 bool Roi::mouvementValide(Echiquier &e, int x, int y)
 {
-    assert(x<9 && x>0 && y<9 && y>0);
+    if ((x<9 && x>0 && y<9 && y>0) == false) {
+        return false;
+    }
 
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);
