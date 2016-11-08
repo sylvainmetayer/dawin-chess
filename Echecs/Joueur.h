@@ -25,7 +25,7 @@ class Joueur
         void affiche();
         virtual bool isWhite()=0;
         void placerPieces(Echiquier &e);
-        virtual void jouer(Echiquier &e, int x, int y)=0;
+        virtual bool jouer(Piece *piece,Echiquier &e, int x, int y)=0;
 };
 
 #endif

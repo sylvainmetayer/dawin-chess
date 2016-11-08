@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "JoueurNoir.h"
 #include <assert.h>
@@ -33,7 +32,17 @@ void Joueur::placerPieces(Echiquier &e)
 }
 
 
-void JoueurNoir::jouer(Echiquier &e, int x, int y)
+bool JoueurNoir::jouer(Piece *piece,Echiquier &e, int x, int y)
 {
+    if (!piece->mouvementValide(e,x,y)) {
+        cout << "Ce mouvement n'est pas valide pour cette piece."<< endl;
+        return false;
+    }
 
+    if (!e.deplacer(piece, x, y)) {
+        cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
+        return false;
+    }
+
+    return true;
 }

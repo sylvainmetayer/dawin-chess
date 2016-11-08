@@ -55,6 +55,7 @@ int main( int argc, char** argv )
 //    cout << (fail == false ? "FAUX" : "VRAI")<< " "<<  (test == true ? "VRAI" : "FAUX") << endl;
 
     bool tourJb = true;
+    bool tourOK = false;
     int position_x, postion_y;
 
     while (true) // Fin de tour à gérer TODO
@@ -70,14 +71,28 @@ int main( int argc, char** argv )
             cout << "Merci de recommencer." << endl;
 
             saisie(position_x, postion_y);
-            Piece *piece = e.getPiece(position_x, postion_y);
+            piece = e.getPiece(position_x, postion_y);
         }
 
         piece->affiche();
         cout << "Destination :" << endl;
         saisie(position_x, postion_y);
 
-        tourJb ? jb.jouer(e,position_x, postion_y) : jn.jouer(e,position_x, postion_y);
-        tourJb = !tourJb;
+        // TODO se référer à Tiphaine pour les déplacements.
+
+        if (tourJb) {
+            tourOK = jb.jouer(piece, e,position_x, postion_y);
+        } else {
+            tourOK = jn.jouer(piece, e,position_x, postion_y);
+        }
+
+        if (tourOK) {
+            // Le tour s'est bien passé, joueur suivant !
+            tourJb = !tourJb;
+        } else {
+            // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
+            cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", ton tour n'est pas valide. Recommence"<< endl;
+        }
+
     }
 }

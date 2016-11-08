@@ -76,6 +76,13 @@ Echiquier::placer( Piece* p )
 bool
 Echiquier::deplacer( Piece* p, int x, int y )
 {
+
+    // TODO Lorsque cela sera fait, decommenter
+    //if (!piece->deplacementOK(this,x,y)) {
+    //    cout << "Cette piece ne peut pas se déplacer à cet endroit !"<< endl;
+    //    return false;
+    //}
+
 }
 
 /**
