@@ -22,17 +22,65 @@ Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white)
 
 bool Fou::mouvementValide(Echiquier &e, int x, int y)
 {
+    bool mooveOK = false; // Valeur a retourne a la fin de la fonction
+    bool isOver = false; // bool pour le while
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
     if ((x<9 && x>0 && y<9 && y>0) == false) {
-        return false;
+        mooveOK = false;
     }
 
-    int diffX = abs(this->m_x - x);
-    int diffY = abs(this->m_y - y);
+    if(_x == x || _y == y)
+        mooveOK = false;
 
-    if (diffX != diffY)
-        return false;
+    while(!isOver) {
+        if( _x < x && _y < y) { // test diagonal bas droit
+            tmpY = _y;
+            for(i = (_x + 1); i < 9; i++) {
+                tmpY = tmpY +1;
+                if( i == x && tmpY == y) {
+                    mooveOK = true;
+                    isOver = true;
+                }
+            }
+        }
+        if( _x > x && _y < y) { // test diagonal bas gauche
+        tmpY = _y;
+            for(i = (_x - 1); i < 0; i--) {
+                tmpY = tmpY +1;
+                if( i == x && tmpY == y) {
+                    mooveOK = true;
+                    isOver = true;
+                }
+            }
+        }
 
-    return true;
+        if( _x > x && _y > y) { // test diagonal haut gauche
+
+            tmpY = _y;
+            for(i = (_x - 1); i < 0; i--) {
+                tmpY = tmpY - 1;
+                if( i == x && tmpY == y) {
+                    mooveOK = true;
+                    isOver = true;
+                }
+            }
+        }
+
+        if( _x > x && _y > y) { // test diagonal haut droit
+
+            tmpY = _y;
+            for(i = (_x + 1); i < 9; i++) {
+                tmpY = tmpY - 1;
+                if( i == x && tmpY == y) {
+                    mooveOK = true;
+                    isOver = true;
+                }
+        }
+    }
+
+    return mooveOK;
 }
 
 char Fou::myChar()
@@ -85,6 +133,18 @@ char Fou::myChar()
 
         tmpY = _y;
         for(i = (_x - 1); i < 0; i--) {
+            tmpY = tmpY - 1;
+            if(e.getPiece(x,tmpY) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if( _x > x && _y > y) { // test diagonal haut droit
+
+        tmpY = _y;
+        for(i = (_x + 1); i < 9; i++) {
             tmpY = tmpY - 1;
             if(e.getPiece(x,tmpY) != 0) {
                 depOK = false;
