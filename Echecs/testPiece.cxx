@@ -79,10 +79,7 @@ int main( int argc, char** argv )
         saisie(position_x, postion_y);
 
         // TODO se référer à Tiphaine pour les déplacements.
-        if (!piece->mouvementValide(e,x,y)) {
-            cout << "Ce mouvement n'est pas valide pour cette piece."<< endl;
-            tourOK = false;
-        } else if (!e.deplacer(piece, x, y)) {
+        if (!e.deplacer(piece, position_x, postion_y)) {
             cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
             tourOK = false;
         } else {

@@ -78,7 +78,12 @@ Echiquier::placer( Piece* p )
 bool
 Echiquier::deplacer( Piece* p, int x, int y )
 {
-    return true;
+
+    if (!p->mouvementValide(*this,x,y)) {
+            cout << "Ce mouvement n'est pas valide pour cette piece."<< endl;
+            return false;
+    }
+
     // TODO Lorsque cela sera fait, decommenter
     //if (!piece->deplacementOK(this,x,y)) {
     //    cout << "Cette piece ne peut pas se déplacer à cet endroit !"<< endl;
@@ -86,7 +91,7 @@ Echiquier::deplacer( Piece* p, int x, int y )
     //}
 
 
-
+    return true;
 }
 
 /**

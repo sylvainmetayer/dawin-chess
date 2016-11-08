@@ -94,4 +94,6 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
         }
     }
 
+    return depOK;
+
 }
