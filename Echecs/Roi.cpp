@@ -3,6 +3,7 @@
 #include <assert.h>
 
 #include "Roi.h"
+#include "Echiquier.h"
 
 using namespace std;
 
@@ -34,4 +35,23 @@ char Roi::myChar()
 void Roi::roque(bool left)
 {
     cout <<"roque de" << (left ? "gauche":"droit")<< " de Roi"<<endl;
+}
+
+bool Roi::deplacementOK(Echiquier &e, int x, int y) {
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    bool depOK;
+
+    if(( ((x == _x -1) || (x == _x + 1) ) && ( y == _y ) )
+       || ( ((x == _x -1) || (x == _x + 1) ) && ( (y == _y - 1) || (y == _y + 1) ))
+       || ( ( (y == _y - 1) || (y == _y + 1)) && (x == _x)) ) {
+        depOK = true;
+       }
+       else
+        depOK = false;
+
+    return depOK;
+
 }

@@ -13,6 +13,7 @@ public:
     bool mouvementValide(Echiquier &e, int x, int y);
     char myChar();
     void roque(bool left);
+    bool deplacementOK(Echiquier &e, int x, int y);
 };
 
 #endif // !defined Piece_h

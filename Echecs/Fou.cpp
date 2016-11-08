@@ -153,4 +153,6 @@ char Fou::myChar()
         }
     }
 
+    return depOK;
+
  }
