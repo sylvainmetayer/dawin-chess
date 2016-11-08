@@ -26,3 +26,8 @@ Reine::Reine(bool white) : Piece(4, (white?1:8), white ),
     m_white = white;
     //cout << "Construction Reine specialisee" << endl;
 }
+
+bool Reine::deplacementOK(Echiquier &e, int x, int y) {
+
+    return Fou::deplacementOK(e,x,y) || Tour::deplacementOK(e, x, y);
+}
