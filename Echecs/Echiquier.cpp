@@ -90,6 +90,12 @@ Echiquier::deplacer( Piece* p, int x, int y )
     //    return false;
     //}
 
+    if (!this->caseLibre(*p, x,y)) {
+        return false;
+    }
+
+
+
 
     return true;
 }
@@ -144,21 +150,22 @@ Echiquier::affiche()
 * prise ou non par une autre piece
 **/
 bool
-Echiquier::prisePossible(Piece &p, int x, int y) {
+Echiquier::caseLibre(Piece &p, int x, int y) {
 
+    cout << "Case Libre : ";
     // Récupération de la pièce à la position données
     Piece* p1 = getPiece(x, y);
 
     if(p1 == 0) {
             cout << "Aucune piece sur cette case" << endl;
-        return false;
+        return true;
     }
     if(p1->isWhite()==true && p.isWhite()==true) {
         cout << "Ceci est une de vos pieces ! Attention !" << endl;
         return false;
     }
     else {
-        cout << "Prise possible" << endl;
+        cout << "Piece adverse, prise possible" << endl;
         return true;
     }
 }

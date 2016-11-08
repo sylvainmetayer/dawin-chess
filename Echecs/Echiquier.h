@@ -85,7 +85,7 @@ public:
     * Permet de savoir si la pièce peux être
     * prise ou non par une autre piece
     **/
-    bool prisePossible(Piece &p, int x, int y);
+    bool caseLibre(Piece &p, int x, int y);
 
     /**
      * Permet la prise d'une piece par une autre,
