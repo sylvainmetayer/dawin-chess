@@ -11,7 +11,6 @@ class JoueurNoir : public Joueur
     public:
         JoueurNoir();
         bool isWhite();
-        bool jouer(Piece *piece,Echiquier &e, int x, int y);
 };
 
 #endif

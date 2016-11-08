@@ -85,6 +85,8 @@ Echiquier::deplacer( Piece* p, int x, int y )
     //    return false;
     //}
 
+
+
 }
 
 /**
