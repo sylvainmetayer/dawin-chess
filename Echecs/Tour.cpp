@@ -10,6 +10,7 @@
 #include <assert.h>
 
 #include "Tour.h"
+#include "Echiquier.h"
 
 #include "Piece.h"
 using namespace std;
@@ -37,4 +38,60 @@ bool Tour::mouvementValide(Echiquier &e, int x, int y)
 char Tour::myChar()
 {
     return m_white ? 'T' : 't';
+}
+
+
+/**
+ * Recupere la piece situee sur une case.
+ * @param Echiquier
+ * @param x un entier entre 1 et 8
+ * @param y un entier entre 1 et 8
+ *
+ * @return true si le deplacement et possible, false si non
+ */
+bool Tour::deplacementOK(Echiquier &e, int x, int y) {
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    int i;
+
+    bool depOK = true;
+
+    if(_x == x && _y < y) {
+        for(i = _x; i < 9; i++) {
+            if(e.getPiece(x, i) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if(_x == x && _y > y) {
+        for(i = _x; i > 9; i--) {
+            if(e.getPiece(x, i) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if(_y == y && _x < x) {
+        for(i = _y; i < 9; i++) {
+            if(e.getPiece(i, y) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if(_y == y && _x > x) {
+        for(i = _y; i > 9; i++) {
+            if(e.getPiece(i, y) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
 }
