@@ -10,6 +10,7 @@
 #include <assert.h>
 
 #include "Fou.h"
+#include "Echiquier.h"
 
 
 using namespace std;
@@ -38,3 +39,58 @@ char Fou::myChar()
 {
     return m_white ? 'F' : 'f';
 }
+
+/**
+ * Recupere la piece situee sur une case.
+ * @param Echiquier
+ * @param x un entier entre 1 et 8
+ * @param y un entier entre 1 et 8
+ *
+ * @return true si le deplacement et possible, false si non
+ */
+ bool Fou::deplacementOK(Echiquier &e, int x, int y) {
+
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+    int tmpY = 0;
+
+    int i,j;
+
+    bool depOK = true;
+
+    if( _x < x && _y < y) { // test diagonal bas droit
+        tmpY = _y;
+        for(i = (_x + 1); i < 9; i++) {
+            tmpY = tmpY +1;
+            if(e.getPiece(x,tmpY) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if( _x > x && _y < y) { // test diagonal bas gauche
+        tmpY = _y;
+        for(i = (_x - 1); i < 0; i--) {
+            tmpY = tmpY +1;
+            if(e.getPiece(x,tmpY) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+    if( _x > x && _y > y) { // test diagonal haut gauche
+
+        tmpY = _y;
+        for(i = (_x - 1); i < 0; i--) {
+            tmpY = tmpY - 1;
+            if(e.getPiece(x,tmpY) != 0) {
+                depOK = false;
+                break;
+            }
+        }
+    }
+
+ }
