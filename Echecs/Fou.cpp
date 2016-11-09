@@ -42,19 +42,22 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
     {
         if( _x < x && _y < y)   // test diagonal bas droit
         {
+            //cout << _x<<endl;
             tmpY = _y;
             for(i = (_x + 1); i < 9; i++)
             {
+                cout << i << endl;
                 tmpY = tmpY +1;
                 if( i == x && tmpY == y)
                 {
                     mooveOK = true;
-                    isOver = true;
                 }
             }
+            isOver = true;
         }
         else if( _x > x && _y < y)   // test diagonal bas gauche
         {
+            cout << "lol-basgauche"<<endl;
             tmpY = _y;
             for(i = (_x - 1); i < 0; i--)
             {
@@ -62,14 +65,14 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
                 if( i == x && tmpY == y)
                 {
                     mooveOK = true;
-                    isOver = true;
                 }
             }
+            isOver = true;
         }
 
         else if( _x > x && _y > y)   // test diagonal haut gauche
         {
-
+            cout << "lol-hautgauche"<<endl;
             tmpY = _y;
             for(i = (_x - 1); i < 0; i--)
             {
@@ -77,14 +80,14 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
                 if( i == x && tmpY == y)
                 {
                     mooveOK = true;
-                    isOver = true;
                 }
             }
+            isOver = true;
         }
 
         else if( _x > x && _y > y)   // test diagonal haut droit
         {
-
+            cout << "lol-hautdroit"<<endl;
             tmpY = _y;
             for(i = (_x + 1); i < 9; i++)
             {
@@ -92,12 +95,13 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
                 if( i == x && tmpY == y)
                 {
                     mooveOK = true;
-                    isOver = true;
                 }
             }
+            isOver = true;
         }
         else
         {
+            cout << "lol-else"<<endl;
             isOver = true;
         }
 

@@ -86,14 +86,5 @@ bool Pion::prisePossible(Echiquier &e, int x, int y) {
 }
 
 bool Pion::deplacementOK(Echiquier &e, int x, int y) {
-
-    int _x = this->m_x; // Position de la piece
-    int _y = this->m_y;
-
-    bool depOK = true;
-    int i;
-
-    if( _x != x) {
-    }
-
+return true;
 }

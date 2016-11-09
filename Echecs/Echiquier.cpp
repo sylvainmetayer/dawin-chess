@@ -84,18 +84,24 @@ Echiquier::deplacer( Piece* p, int x, int y )
             return false;
     }
 
-    // TODO Lorsque cela sera fait, decommenter
-    //if (!piece->deplacementOK(this,x,y)) {
-    //    cout << "Cette piece ne peut pas se déplacer à cet endroit !"<< endl;
-    //    return false;
-    //}
-
     if (!this->caseLibre(*p, x,y)) {
         return false;
     }
 
+    if (!p->deplacementOK(*this, x,y)) {
+        return false;
+    }
 
+    // Missing : est-ce que j'ai une piece sur mon trajet ?
 
+    // Gestion de la suppression des pièces sur le passage TODO
+
+    // Dernière étape : On déplace la pièce.
+    Piece * deplacement = this->enleverPiece(p->x(), p->y());
+    if (deplacement != 0) {
+        deplacement->move(x,y);
+        this->placer(deplacement);
+    }
 
     return true;
 }
@@ -174,17 +180,17 @@ Echiquier::caseLibre(Piece &p, int x, int y) {
  * Permet la prise d'une piece par une autre,
  * la supprimant ainsi du plateau
  */
-bool
-Echiquier::prise(Piece &p, int x, int y) {
-
-    bool priseOK = false;
-
-    Piece* p1 = getPiece(x, y);
-    if(getPiece(x, y) != 0) {
-        enleverPiece(x,y);
-        cout << "La piece en (" << x << "," << y<< ") a ete supprime" << endl;
-        priseOK = true;
-    }
-
-    return priseOK;
-}
+//bool
+//Echiquier::prise(Piece &p, int x, int y) {
+//
+//    bool priseOK = false;
+//
+//    Piece* p1 = getPiece(x, y);
+//    if(getPiece(x, y) != 0) {
+//        enleverPiece(x,y);
+//        cout << "La piece en (" << x << "," << y<< ") a ete supprime" << endl;
+//        priseOK = true;
+//    }
+//
+//    return priseOK;
+//}

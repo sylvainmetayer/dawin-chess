@@ -27,15 +27,16 @@ void saisie(int &x, int &y)
  */
 int main( int argc, char** argv )
 {
-    // Création de l'échiquier
+    // Initialisation
     Echiquier e;
-    //e.affiche(); // Le plateau est vide
-
-    // Création des joueurs et des pièces associées
     JoueurBlanc jb;
     JoueurNoir jn;
 
-    // On place les pièces des joueurs sur l'échiquier
+    // Le joueur blanc commence
+    bool tourJb = true;
+    bool tourOK = false;
+    int position_x, postion_y;
+
     jb.placerPieces(e);
     jn.placerPieces(e);
 
@@ -43,24 +44,11 @@ int main( int argc, char** argv )
     cout << "Bienvenue sur l'echuiquier de la DoomPr0gTeam " << endl;
     cout << "---------------------" << endl;
 
-    // Début du jeu
-    e.affiche();
-
-//    Piece *pion = e.getPiece(1,2);
-//    pion->affiche();
-//
-//    bool test = pion->mouvementValide(e, 1,4);
-//    bool fail = pion->mouvementValide(e, 1,3);
-//
-//    cout << (fail == false ? "FAUX" : "VRAI")<< " "<<  (test == true ? "VRAI" : "FAUX") << endl;
-
-    bool tourJb = true;
-    bool tourOK = false;
-    int position_x, postion_y;
-
     while (true) // Fin de tour à gérer TODO
     {
-        cout << "Debut tour joueur " << (tourJb ? "blanc" : "noir") << endl;
+        cout << "---------" << endl;
+        cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
+        e.affiche();
 
         cout << "Selectionner la piece a deplacer :" << endl;
         saisie(position_x, postion_y);
@@ -78,7 +66,6 @@ int main( int argc, char** argv )
         cout << "Destination :" << endl;
         saisie(position_x, postion_y);
 
-        // TODO se référer à Tiphaine pour les déplacements.
         if (!e.deplacer(piece, position_x, postion_y)) {
             cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
             tourOK = false;
@@ -87,11 +74,13 @@ int main( int argc, char** argv )
         }
 
         if (tourOK) {
+            // Il faut check s'il s'agit de la fin de partie. TODO
+
             // Le tour s'est bien passé, joueur suivant !
             tourJb = !tourJb;
         } else {
             // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
-            cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", ton tour n'est pas valide. Recommence"<< endl;
+            cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
         }
 
     }
