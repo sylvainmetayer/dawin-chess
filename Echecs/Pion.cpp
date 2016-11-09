@@ -77,14 +77,37 @@ bool Pion::prisePossible(Echiquier &e, int x, int y) {
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
 
+    bool priseOK = false;
+
     if(this->isWhite() == true) {
 
+        if( _y < y && ( (_x - x == -1) || (_x - x == 1) ) && this->first_move == false && (e.getPiece(x,y) != 0) ) {
 
+            priseOK = true;
+        }
+    }
+    if(this->isWhite() == false) {
+
+        if( _y > y && ( (_x - x == -1) || (_x - x == 1) ) && this->first_move == false && (e.getPiece(x,y) != 0)  ) {
+
+                priseOK = true;
+            }
     }
 
+    return priseOK;
 
 }
 
 bool Pion::deplacementOK(Echiquier &e, int x, int y) {
-return true;
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    bool depOK = true;
+    int i;
+
+    if()
+
+    if( _x != x) {
+    }
 }
