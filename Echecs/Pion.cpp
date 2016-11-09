@@ -71,3 +71,29 @@ char Pion::myChar()
 {
   return m_white?'P':'p';
 }
+
+bool Pion::prisePossible(Echiquier &e, int x, int y) {
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    if(this->isWhite() == true) {
+
+
+    }
+
+
+}
+
+bool Pion::deplacementOK(Echiquier &e, int x, int y) {
+
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    bool depOK = true;
+    int i;
+
+    if( _x != x) {
+    }
+
+}

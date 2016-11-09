@@ -27,60 +27,84 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
 
-    if ((x<9 && x>0 && y<9 && y>0) == false) {
+    int tmpY = 0;
+    int i;
+
+    if ((x<9 && x>0 && y<9 && y>0) == false)
+    {
         mooveOK = false;
     }
 
     if(_x == x || _y == y)
         mooveOK = false;
 
-    while(!isOver) {
-        if( _x < x && _y < y) { // test diagonal bas droit
+    while(!isOver)
+    {
+        if( _x < x && _y < y)   // test diagonal bas droit
+        {
             tmpY = _y;
-            for(i = (_x + 1); i < 9; i++) {
+            for(i = (_x + 1); i < 9; i++)
+            {
                 tmpY = tmpY +1;
-                if( i == x && tmpY == y) {
+                if( i == x && tmpY == y)
+                {
                     mooveOK = true;
                     isOver = true;
                 }
             }
         }
-        if( _x > x && _y < y) { // test diagonal bas gauche
-        tmpY = _y;
-            for(i = (_x - 1); i < 0; i--) {
+        else if( _x > x && _y < y)   // test diagonal bas gauche
+        {
+            tmpY = _y;
+            for(i = (_x - 1); i < 0; i--)
+            {
                 tmpY = tmpY +1;
-                if( i == x && tmpY == y) {
+                if( i == x && tmpY == y)
+                {
                     mooveOK = true;
                     isOver = true;
                 }
             }
         }
 
-        if( _x > x && _y > y) { // test diagonal haut gauche
+        else if( _x > x && _y > y)   // test diagonal haut gauche
+        {
 
             tmpY = _y;
-            for(i = (_x - 1); i < 0; i--) {
+            for(i = (_x - 1); i < 0; i--)
+            {
                 tmpY = tmpY - 1;
-                if( i == x && tmpY == y) {
+                if( i == x && tmpY == y)
+                {
                     mooveOK = true;
                     isOver = true;
                 }
             }
         }
 
-        if( _x > x && _y > y) { // test diagonal haut droit
+        else if( _x > x && _y > y)   // test diagonal haut droit
+        {
 
             tmpY = _y;
-            for(i = (_x + 1); i < 9; i++) {
+            for(i = (_x + 1); i < 9; i++)
+            {
                 tmpY = tmpY - 1;
-                if( i == x && tmpY == y) {
+                if( i == x && tmpY == y)
+                {
                     mooveOK = true;
                     isOver = true;
                 }
+            }
         }
+        else
+        {
+            isOver = true;
+        }
+
     }
 
     return mooveOK;
+
 }
 
 char Fou::myChar()
@@ -96,7 +120,8 @@ char Fou::myChar()
  *
  * @return true si le deplacement et possible, false si non
  */
- bool Fou::deplacementOK(Echiquier &e, int x, int y) {
+bool Fou::deplacementOK(Echiquier &e, int x, int y)
+{
 
 
     int _x = this->m_x; // Position de la piece
@@ -107,46 +132,58 @@ char Fou::myChar()
 
     bool depOK = true;
 
-    if( _x < x && _y < y) { // test diagonal bas droit
+    if( _x < x && _y < y)   // test diagonal bas droit
+    {
         tmpY = _y;
-        for(i = (_x + 1); i < 9; i++) {
+        for(i = (_x + 1); i < 9; i++)
+        {
             tmpY = tmpY +1;
-            if(e.getPiece(x,tmpY) != 0) {
+            if(e.getPiece(x,tmpY) != 0)
+            {
                 depOK = false;
                 break;
             }
         }
     }
 
-    if( _x > x && _y < y) { // test diagonal bas gauche
+    if( _x > x && _y < y)   // test diagonal bas gauche
+    {
         tmpY = _y;
-        for(i = (_x - 1); i < 0; i--) {
+        for(i = (_x - 1); i < 0; i--)
+        {
             tmpY = tmpY +1;
-            if(e.getPiece(x,tmpY) != 0) {
+            if(e.getPiece(x,tmpY) != 0)
+            {
                 depOK = false;
                 break;
             }
         }
     }
 
-    if( _x > x && _y > y) { // test diagonal haut gauche
+    if( _x > x && _y > y)   // test diagonal haut gauche
+    {
 
         tmpY = _y;
-        for(i = (_x - 1); i < 0; i--) {
+        for(i = (_x - 1); i < 0; i--)
+        {
             tmpY = tmpY - 1;
-            if(e.getPiece(x,tmpY) != 0) {
+            if(e.getPiece(x,tmpY) != 0)
+            {
                 depOK = false;
                 break;
             }
         }
     }
 
-    if( _x > x && _y > y) { // test diagonal haut droit
+    if( _x > x && _y > y)   // test diagonal haut droit
+    {
 
         tmpY = _y;
-        for(i = (_x + 1); i < 9; i++) {
+        for(i = (_x + 1); i < 9; i++)
+        {
             tmpY = tmpY - 1;
-            if(e.getPiece(x,tmpY) != 0) {
+            if(e.getPiece(x,tmpY) != 0)
+            {
                 depOK = false;
                 break;
             }
@@ -155,4 +192,4 @@ char Fou::myChar()
 
     return depOK;
 
- }
+}

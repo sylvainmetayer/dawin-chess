@@ -174,12 +174,17 @@ Echiquier::caseLibre(Piece &p, int x, int y) {
  * Permet la prise d'une piece par une autre,
  * la supprimant ainsi du plateau
  */
-void
+bool
 Echiquier::prise(Piece &p, int x, int y) {
+
+    bool priseOK = false;
 
     Piece* p1 = getPiece(x, y);
     if(getPiece(x, y) != 0) {
         enleverPiece(x,y);
         cout << "La piece en (" << x << "," << y<< ") a ete supprime" << endl;
+        priseOK = true;
     }
+
+    return priseOK;
 }

@@ -14,6 +14,8 @@ public:
     Pion(bool white, int p);
     bool mouvementValide(Echiquier & e, int x, int y );
     char myChar();
+    bool deplacementOK(Echiquier &e, int x, int y);
+    bool prisePossible(Echiquier &e, int x, int y);
 };
 
 #endif // !defined Pion_h
