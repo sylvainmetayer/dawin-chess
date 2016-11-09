@@ -5,6 +5,7 @@
 // Utile pour l'affichage
 #include <iostream>
 #include <stdlib.h>
+#include <limits>
 
 #include "Echiquier.h"
 

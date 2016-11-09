@@ -106,8 +106,10 @@ bool Pion::deplacementOK(Echiquier &e, int x, int y) {
     bool depOK = true;
     int i;
 
+    /*
+    // Get some rest and fix that tomorrow.
     if()
 
     if( _x != x) {
-    }
+    }*/
 }

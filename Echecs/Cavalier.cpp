@@ -30,3 +30,9 @@ Cavalier::Cavalier( bool white, bool left ) : Piece((left)?2:7,(white)?1:8,white
 {
   //cout << "Construction Cavalier specialisee" << endl;
 }
+
+bool Cavalier::deplacementOK(Echiquier &e, int x, int y)
+{
+    // Le cavalier peut passer par dessus les autres cases.
+    return true;
+}

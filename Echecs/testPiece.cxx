@@ -9,6 +9,30 @@
 // Pour utiliser les flux de iostream sans mettre "std::" tout le temps.
 using namespace std;
 
+// http://cpp.developpez.com/faq/cpp/?page=Manipulation-de-la-console#Comment-verifier-les-valeurs-saisies-avec-cin
+bool read_choice( int & N )
+{
+    while ( ! ( cin >> N ) || N < 1 || N > 8 )
+    {
+        if ( cin.eof() )
+        {
+            // ^D  (^Z sous windows); Fin du flux d'entree !
+            return false;
+        }
+        else if ( cin.fail() )
+        {
+            cout << "Saisie incorrecte, recommencez : ";
+            cin.clear();
+            cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+        }
+        else
+        {
+            cout << "Le chiffre n'est pas entre 1 et 8, recommencez : ";
+        }
+    }
+    return true; // succès
+}
+
 bool compare(const Piece &p1, const Piece &p2)
 {
     return (p1.x()==p2.x()) && (p1.y()==p2.y());
@@ -17,9 +41,9 @@ bool compare(const Piece &p1, const Piece &p2)
 void saisie(int &x, int &y)
 {
     cout << "x :";
-    cin >> x;
+    read_choice(x);
     cout<<"y :";
-    cin >> y;
+    read_choice(y);
 }
 
 /**

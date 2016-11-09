@@ -3,8 +3,8 @@
 
 #include "Piece.h"
 
-class Echiquier;
-// #include "Echiquier.h" problème de référence croisée
+//class Echiquier;
+ #include "Echiquier.h" problème de référence croisée
 
 class Pion : public Piece
 {
