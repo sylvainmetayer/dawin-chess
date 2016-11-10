@@ -16,17 +16,7 @@ JoueurNoir::JoueurNoir() : Joueur(false)
     //cout << "Construction Joueur Noir par defaut" << endl;
 }
 
-
 bool JoueurNoir::isWhite()
 {
     return false;
-}
-
-void Joueur::placerPieces(Echiquier &e)
-{
-    for (int i=0; i<16; i++)
-    {
-        bool ok=e.placer(m_pieces[i]);
-        assert(ok);
-    }
 }

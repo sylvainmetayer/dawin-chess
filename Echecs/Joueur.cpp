@@ -69,3 +69,12 @@ void Joueur::affiche()
     }
 }
 
+void Joueur::placerPieces(Echiquier &e)
+{
+    for (int i=0; i<16; i++)
+    {
+        bool ok=e.placer(m_pieces[i]);
+        assert(ok);
+    }
+}
+

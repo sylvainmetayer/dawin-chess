@@ -4,7 +4,7 @@
 #include "Piece.h"
 
 //class Echiquier;
- #include "Echiquier.h" problème de référence croisée
+#include "Echiquier.h" //problème de référence croisée
 
 class Pion : public Piece
 {
