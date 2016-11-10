@@ -22,7 +22,6 @@ Echiquier::Echiquier()
         m_cases[i]=NULL;
 }
 
-
 /**
  * Recupere la piece situee sur une case.
  *
@@ -79,13 +78,13 @@ bool
 Echiquier::deplacer( Piece* p, int x, int y )
 {
 
+    if (!this->caseLibre(*p, x,y)) {
+        return false;
+    }
+
     if (!p->mouvementValide(*this,x,y)) {
             cout << "Ce mouvement n'est pas valide pour cette piece."<< endl;
             return false;
-    }
-
-    if (!this->caseLibre(*p, x,y)) {
-        return false;
     }
 
     if (!p->deplacementOK(*this, x,y)) {
