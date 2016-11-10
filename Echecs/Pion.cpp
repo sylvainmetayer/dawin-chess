@@ -100,18 +100,18 @@ bool Pion::prisePossible(Echiquier &e, int x, int y) {
 
 bool Pion::deplacementOK(Echiquier &e, int x, int y) {
 
-    int _x = this->m_x; // Position de la piece
-    int _y = this->m_y;
-
-    bool depOK = true;
-    int i;
-
-    /*
-    // Get some rest and fix that tomorrow.
-    if()
-
-    if( _x != x) {
-    }*/
+//    int _x = this->m_x; // Position de la piece
+//    int _y = this->m_y;
+//
+//    bool depOK = false;
+//    int i;
+//
+//
+//    if(Pion::prisePossible(&e, x, y)) {
+//        depOK = true;
+//    }
+//    if( _x != x && prisePossible(e, x, y) == true) {
+//    }
 }
 
 char* Pion::getNomPiece()
