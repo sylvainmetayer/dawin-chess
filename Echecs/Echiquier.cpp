@@ -83,17 +83,19 @@ Echiquier::deplacer( Piece* p, int x, int y )
     }
 
     if (!p->mouvementValide(*this,x,y)) {
-            cout << "Ce mouvement n'est pas valide pour cette piece."<< endl;
+            cout << "MouvementValide Fail"<< endl;
             return false;
     }
 
     if (!p->deplacementOK(*this, x,y)) {
+        cout << "DeplacementOK Fail"<<endl;
         return false;
     }
 
     // Missing : est-ce que j'ai une piece sur mon trajet ?
 
     // Gestion de la suppression des pièces sur le passage TODO
+    this->prise(x,y);
 
     // Dernière étape : On déplace la pièce.
     Piece * deplacement = this->enleverPiece(p->x(), p->y());
