@@ -113,3 +113,8 @@ bool Pion::deplacementOK(Echiquier &e, int x, int y) {
     if( _x != x) {
     }*/
 }
+
+char* Pion::getNomPiece()
+{
+    return "Piece non specialisee";
+}

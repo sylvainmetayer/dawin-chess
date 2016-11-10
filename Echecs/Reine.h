@@ -15,6 +15,7 @@ public:
     bool mouvementValide(Echiquier &e, int x, int y);
     bool deplacementOK(Echiquier &e, int x, int y);
     char myChar();
+    char* getNomPiece();
 };
 
 #endif // Defined Reine_h

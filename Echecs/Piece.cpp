@@ -87,9 +87,9 @@ Piece::isBlack() const
 }
 
 void
-Piece::affiche() const
+Piece::affiche()
 {
-    cout << "Piece: x=" << m_x << " y=" << m_y << " "
+    cout << this->getNomPiece() <<  ": x=" << m_x << " y=" << m_y << " "
          << ( m_white ? "blanche" : "noire" ) << endl;
 }
 
@@ -117,4 +117,9 @@ bool Piece::deplacementOK(Echiquier &e, int x, int y)
 char Piece::myChar()
 {
     return m_white ? 'B' : 'N';
+}
+
+char* Piece::getNomPiece()
+{
+    return "Piece non specialisee";
 }

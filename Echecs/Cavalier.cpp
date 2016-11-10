@@ -36,3 +36,8 @@ bool Cavalier::deplacementOK(Echiquier &e, int x, int y)
     // Le cavalier peut passer par dessus les autres cases.
     return true;
 }
+
+char* Cavalier::getNomPiece()
+{
+    return "Cavalier";
+}

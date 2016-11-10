@@ -14,6 +14,7 @@ public:
     char myChar();
     void roque(bool left);
     bool deplacementOK(Echiquier &e, int x, int y);
+    char* getNomPiece();
 };
 
 #endif // !defined Piece_h

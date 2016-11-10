@@ -16,6 +16,7 @@ public:
     char myChar();
     bool deplacementOK(Echiquier &e, int x, int y);
     bool prisePossible(Echiquier &e, int x, int y);
+    char* getNomPiece();
 };
 
 #endif // !defined Pion_h

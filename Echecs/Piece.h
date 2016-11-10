@@ -32,11 +32,12 @@ public:
     int y() const;
     bool isWhite() const;
     bool isBlack() const;
-    void affiche() const;
+    void affiche();
     //const Piece & plusforte(const Piece & autre) const;
     virtual bool mouvementValide(Echiquier &e, int x, int y);
     virtual char myChar();
     virtual bool deplacementOK(Echiquier &e, int x, int y);
+    virtual char* getNomPiece();
 };
 
 #endif // !defined Piece_h

@@ -97,3 +97,8 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     return depOK;
 
 }
+
+char* Tour::getNomPiece()
+{
+    return "Tour";
+}

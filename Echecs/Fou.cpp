@@ -197,3 +197,8 @@ bool Fou::deplacementOK(Echiquier &e, int x, int y)
     return depOK;
 
 }
+
+char* Fou::getNomPiece()
+{
+    return "Fou ";
+}
