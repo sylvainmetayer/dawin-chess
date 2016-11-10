@@ -29,6 +29,10 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);
 
+    if(prisePossible(e, x, y)) {
+        return true;
+    }
+
     if (this->isBlack() == true) {
         // Il faut que la direction soit montante
         if (this->m_y > y) {
@@ -100,21 +104,19 @@ bool Pion::prisePossible(Echiquier &e, int x, int y) {
 
 bool Pion::deplacementOK(Echiquier &e, int x, int y) {
 
-//    int _x = this->m_x; // Position de la piece
-//    int _y = this->m_y;
-//
-//    bool depOK = false;
-//    int i;
-//
-//
-//    if(Pion::prisePossible(&e, x, y)) {
-//        depOK = true;
-//    }
-//    if( _x != x && prisePossible(e, x, y) == true) {
-//    }
+    int _x = this->m_x; // Position de la piece
+    int _y = this->m_y;
+
+    bool depOK = false;
+    int i;
+
+    if( _x != x && prisePossible(e, x, y) == true) {
+    }
+
+    //if(this->)
 }
 
 char* Pion::getNomPiece()
 {
-    return "Piece non specialisee";
+    return "Pion";
 }
