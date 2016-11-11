@@ -29,9 +29,9 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);
 
-    if(prisePossible(e, x, y)) {
-        return true;
-    }
+    //if(prisePossible(e, x, y)) {
+    //    return true;
+    //}
 
     if (this->isBlack() == true) {
         // Il faut que la direction soit montante
@@ -39,11 +39,11 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
             if (this->first_move == true) {
                 // On peut se deplacer d'un ou deux
                 this->first_move = false;
-                if (diffY == 1||diffY == 2)
+                if (diffY == 1||diffY == 2||(diffX==1 && diffY==1)||(diffX==1 && diffY==2))
                     return true;
             } else {
                 // On ne peut se deplacer que d'un
-                if (diffY == 1) {
+                if (diffY == 1||(diffX==1 && diffY==1)) {
                     return true;
                 }
             }
@@ -55,11 +55,11 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
             if (this->first_move == true) {
                 // On peut se deplacer d'un ou deux
                 this->first_move = false;
-                if (diffY == 1||diffY == 2)
+                if (diffY == 1||diffY == 2||(diffX==1 && diffY==1)||(diffX==1 && diffY==2))
                     return true;
             } else {
                 // On ne peut se deplacer que d'un
-                if (diffY == 1) {
+                if (diffY == 1||(diffX==1 && diffY==1)) {
                     return true;
                 }
             }
@@ -109,6 +109,10 @@ bool Pion::deplacementOK(Echiquier &e, int x, int y) {
 
     bool depOK = false;
     int i;
+
+    // FIXME On ne commit pas quand on ne finit pas une fonction :'(
+    // TODO Supprimer le return true une fois que la fonction sera corrigée.
+    return true;
 
     if( _x != x && prisePossible(e, x, y) == true) {
     }
