@@ -1,9 +1,8 @@
 #include <iostream>
 #include <stdlib.h>
-#include <assert.h>
 
 #include "Roi.h"
-#include "Echiquier.h"
+
 
 using namespace std;
 

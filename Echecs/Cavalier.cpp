@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stdlib.h>
-#include <assert.h>
 
 #include "Cavalier.h"
 

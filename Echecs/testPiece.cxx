@@ -6,7 +6,6 @@
 
 #include "testPiece.h"
 
-// Pour utiliser les flux de iostream sans mettre "std::" tout le temps.
 using namespace std;
 
 // http://cpp.developpez.com/faq/cpp/?page=Manipulation-de-la-console#Comment-verifier-les-valeurs-saisies-avec-cin
@@ -31,11 +30,6 @@ bool read_choice( int & N )
         }
     }
     return true; // succès
-}
-
-bool compare(const Piece &p1, const Piece &p2)
-{
-    return (p1.x()==p2.x()) && (p1.y()==p2.y());
 }
 
 void saisie(int &x, int &y)

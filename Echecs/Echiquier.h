@@ -91,7 +91,7 @@ public:
      * Permet la prise d'une piece par une autre,
      * la supprimant ainsi du plateau
      */
-    void prise(int x, int y);
+    bool prise(Piece *eater, int x, int y);
 
 
 };

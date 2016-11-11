@@ -93,15 +93,6 @@ Piece::affiche()
          << ( m_white ? "blanche" : "noire" ) << endl;
 }
 
-//const Piece &
-//Piece::plusforte(const Piece & autre) const
-//{
-//    if (true)
-//        return autre;
-//    else
-//        return *this;
-//}
-
 bool Piece::mouvementValide(Echiquier &e, int x, int y)
 {
     cout <<"Piece mouvement valide non specialise "<<endl;

@@ -7,8 +7,15 @@
 #if !defined Joueur_h
 #define Joueur_h
 
-#include "Piece.h"
 #include "Echiquier.h"
+#include "Piece.h"
+#include "Roi.h"
+#include "Reine.h"
+#include "Tour.h"
+#include "Fou.h"
+#include "Cavalier.h"
+#include "Pion.h"
+
 #include <vector>
 
 using namespace std;

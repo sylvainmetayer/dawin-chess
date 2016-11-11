@@ -7,7 +7,7 @@
 // A besoin de la declaration de la classe
 #include <iostream>
 #include "Reine.h"
-#include "Echiquier.h"
+
 
 using namespace std;
 

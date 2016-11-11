@@ -29,9 +29,12 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);
 
+    // TODO Inutile ?
     //if(prisePossible(e, x, y)) {
     //    return true;
     //}
+
+    // TODO Il y a une petite erreur à corriger sur cette fonction, le pion peut du coup se déplacer en diagonale..
 
     if (this->isBlack() == true) {
         // Il faut que la direction soit montante

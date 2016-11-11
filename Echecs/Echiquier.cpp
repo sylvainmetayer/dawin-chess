@@ -5,9 +5,6 @@
  */
 
 #include <iostream>
-#include <assert.h>
-
-// A besoin de la declaration de la classe
 #include "Echiquier.h"
 
 using namespace std;
@@ -52,7 +49,10 @@ Echiquier::getPiece( int x, int y )
 bool
 Echiquier::placer( Piece* p )
 {
-    assert(p->x()<9 && p->x()>0 && p->y()<9 && p->y()>0);
+    if ((p->x()<9 && p->x()>0 && p->y()<9 && p->y()>0) == false) {
+        return false;
+    }
+
     if (Echiquier::getPiece(p->x(),p->y())==NULL && p!=NULL)
     {
         m_cases[(p->x()-1)+8*((*p).y()-1)]=p;
@@ -95,9 +95,11 @@ Echiquier::deplacer( Piece* p, int x, int y )
     // Missing : est-ce que j'ai une piece sur mon trajet ?
 
     // Gestion de la suppression des pièces sur le passage TODO
-    this->prise(x,y);
+    if (!this->prise(p, x,y)) {
+        cout << "Prise Fail" << endl;
+        return false;
+    }
 
-    // Dernière étape : On déplace la pièce.
     Piece * deplacement = this->enleverPiece(p->x(), p->y());
     if (deplacement != 0) {
         deplacement->move(x,y);
@@ -156,8 +158,7 @@ Echiquier::affiche()
 * Permet de savoir si la pièce peux être
 * prise ou non par une autre piece
 **/
-bool
-Echiquier::caseLibre(Piece &p, int x, int y) {
+bool Echiquier::caseLibre(Piece &p, int x, int y) {
 
     cout << "Case Libre : ";
     // Récupération de la pièce à la position données
@@ -180,15 +181,29 @@ Echiquier::caseLibre(Piece &p, int x, int y) {
 /**
  * Permet la prise d'une piece par une autre,
  * la supprimant ainsi du plateau
+ * @param eater : La piece qui se deplace
+ * @param x le x de destination
+ * @param y le y de destination
+ * @return false si la piece que l'on tente de retirer
+ * est de la meme couleur que la piece qui se deplace,
+ * true aucune piece n'a ete supprimee ou si
+ * la suppression de piece s'est correctement deroulee
  */
-void Echiquier::prise(int x, int y) {
+bool Echiquier::prise(Piece *eater, int x, int y) {
 
     Piece* eatMe = getPiece(x, y);
     if(eatMe != 0) {
         eatMe = enleverPiece(x,y);
         if (eatMe != 0) {
+            if (eatMe->isBlack() == eater->isBlack()) {
+                cout << "Vous ne pouvez pas prendre une piece de votre couleur !"<<endl;
+                return false;
+            }
             cout << "La piece suivante a ete supprimee."<<endl;
             eatMe->affiche();
+            return true;
         }
     }
+    cout << "Aucune piece n'a ete supprimee" << endl;
+    return true;
 }

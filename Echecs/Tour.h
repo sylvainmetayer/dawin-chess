@@ -2,6 +2,8 @@
 #define Tour_h
 
 #include "Piece.h"
+#include "Echiquier.h"
+//#include "Piece.h"
 
 class Echiquier;
 // #include "Echiquier.h" problème de référence croisée

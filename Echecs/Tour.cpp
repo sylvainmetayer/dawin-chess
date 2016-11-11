@@ -4,15 +4,10 @@
  * @file Tour.cxx
  */
 
-// A besoin de la declaration de la classe
 #include <iostream>
 #include <stdlib.h>
-#include <assert.h>
 
 #include "Tour.h"
-#include "Echiquier.h"
-
-#include "Piece.h"
 using namespace std;
 
 Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
