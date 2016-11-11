@@ -22,90 +22,137 @@ Pion::Pion( bool white, int p ) : Piece(p,(white)?2:7,white)
 // Suppression du const pour pouvoir modifier le pion au premier déplacement.
 bool Pion::mouvementValide(Echiquier & e, int x, int y)
 {
-    if ((x<9 && x>0 && y<9 && y>0) == false) {
+    if ((x<9 && x>0 && y<9 && y>0) == false)
+    {
         return false;
     }
 
     int diffX = abs(this->m_x - x);
     int diffY = abs(this->m_y - y);
 
-    // TODO Inutile ?
-    //if(prisePossible(e, x, y)) {
-    //    return true;
-    //}
+    bool moveOK = false;
 
-    // TODO Il y a une petite erreur à corriger sur cette fonction, le pion peut du coup se déplacer en diagonale..
-
-    if (this->isBlack() == true) {
-        // Il faut que la direction soit montante
-        if (this->m_y > y) {
-            if (this->first_move == true) {
-                // On peut se deplacer d'un ou deux
-                this->first_move = false;
-                if (diffY == 1||diffY == 2||(diffX==1 && diffY==1)||(diffX==1 && diffY==2))
-                    return true;
-            } else {
-                // On ne peut se deplacer que d'un
-                if (diffY == 1||(diffX==1 && diffY==1)) {
-                    return true;
+    if (diffX != 0)
+    {
+        moveOK = false;
+    }
+    else
+    {
+        if (this->isBlack() == true)
+        {
+            // Il faut que la direction soit montante
+            if (this->m_y > y)
+            {
+                if (this->first_move == true)
+                {
+                    // On peut se deplacer d'un ou deux
+                    this->first_move = false;
+                    if (diffY == 1||diffY == 2)
+                        moveOK = true;
+                }
+                else
+                {
+                    // On ne peut se deplacer que d'un
+                    if (diffY == 1)
+                    {
+                        moveOK = true;
+                    }
                 }
             }
         }
-    } else {
+        else
+        {
 
-        // Il faut que la direction soit descendante
-        if (this->m_y < y) {
-            if (this->first_move == true) {
-                // On peut se deplacer d'un ou deux
-                this->first_move = false;
-                if (diffY == 1||diffY == 2||(diffX==1 && diffY==1)||(diffX==1 && diffY==2))
-                    return true;
-            } else {
-                // On ne peut se deplacer que d'un
-                if (diffY == 1||(diffX==1 && diffY==1)) {
-                    return true;
+            // Il faut que la direction soit descendante
+            if (this->m_y < y)
+            {
+                if (this->first_move == true)
+                {
+                    // On peut se deplacer d'un ou deux
+                    this->first_move = false;
+                    if (diffY == 1||diffY == 2)
+                        moveOK = true;
+                }
+                else
+                {
+                    // On ne peut se deplacer que d'un
+                    if (diffY == 1)
+                    {
+                        moveOK = true;
+                    }
                 }
             }
         }
+
+        if (moveOK == true && e.getPiece(x,y) != 0) {
+            // On ne peut pas faire le déplacement, le déplacement est correct mais on ne peut prendre les pieces qu'en diagonales
+            cout << "Le mouvement du pion est correct, mais il ne peut prendre une piece verticalement."<<endl;
+            moveOK = false;
+        }
+
     }
 
-    cout << diffX << " diffy ="<<diffY<<endl;
+    cout << "MoveOK : "<< (moveOK == true ? "VRAI":"FAUX") <<endl;
+    cout << "Prise possible " << ( prisePossible(e, x, y) ? "VRAI" : "FAUX")<<endl;
 
-    return false;
+    if(prisePossible(e, x, y))
+    {
+        // Regle particuliere de deplacement pour le pion pour prendre une piece
+        return true;
+    }
+
+    if (!prisePossible(e, x, y) && diffX != 0)
+    {
+        // Un pion ne peut pas se déplacer en diagonale sans prendre de piece !
+        return false;
+    }
+
+    return moveOK;
 }
 
 char Pion::myChar()
 {
-  return m_white?'P':'p';
+    return m_white?'P':'p';
 }
 
-bool Pion::prisePossible(Echiquier &e, int x, int y) {
+bool Pion::prisePossible(Echiquier &e, int x, int y)
+{
 
-    int _x = this->m_x; // Position de la piece
+    // Position de la piece
+    int _x = this->m_x;
     int _y = this->m_y;
 
-    bool priseOK = false;
+    // Différence piece / eatMe
+    int diffX = abs(_x - x);
+    int diffY = abs(_y - y);
 
-    if(this->isWhite() == true) {
+    Piece *eatMe = e.getPiece(x,y);
 
-        if( _y < y && ( (_x - x == -1) || (_x - x == 1) ) && this->first_move == false && (e.getPiece(x,y) != 0) ) {
-
-            priseOK = true;
-        }
-    }
-    if(this->isWhite() == false) {
-
-        if( _y > y && ( (_x - x == -1) || (_x - x == 1) ) && this->first_move == false && (e.getPiece(x,y) != 0)  ) {
-
-                priseOK = true;
-            }
+    if (eatMe == 0)
+    {
+        // Pas de prise possible puisque pas de piece
+        return false;
     }
 
-    return priseOK;
 
+    if (this->first_move == true)
+    {
+        // La prise se fait uniquement en diagonale, de 1 ou 2 en y puisque premier mouvement.
+        // De plus, il faut que les couleurs de piece soient différentes.
+        if ( ((diffX==1 && diffY==1)||(diffX==1 && diffY==2)) && this->isWhite() != eatMe->isWhite() )
+            return true;
+    }
+    else
+    {
+        if ( ((diffX==1 && diffY==1)) && this->isWhite() != eatMe->isWhite() )
+            return true;
+    }
+
+    return false;
 }
 
-bool Pion::deplacementOK(Echiquier &e, int x, int y) {
+bool Pion::deplacementOK(Echiquier &e, int x, int y)
+{
 
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
@@ -117,7 +164,8 @@ bool Pion::deplacementOK(Echiquier &e, int x, int y) {
     // TODO Supprimer le return true une fois que la fonction sera corrigée.
     return true;
 
-    if( _x != x && prisePossible(e, x, y) == true) {
+    if( _x != x && prisePossible(e, x, y) == true)
+    {
     }
 
     //if(this->)
