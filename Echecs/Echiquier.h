@@ -93,6 +93,22 @@ public:
      */
     bool prise(Piece *eater, int x, int y);
 
+    /**
+    * Cette fonction permet de savoir si la partie est finie ou non.
+    * @return 0 si la partie n'est pas finie, 1 si le joueur blanc a gagné
+    * et 2 si le joueur noir a gagné.
+    *
+    */
+    int gameOver();
+
+    /**
+    * Cette fonction retourne le Roi de la couleur demandée.
+    * Utilisée pour vérifier la fin du jeu
+    * @param white Couleur du Roi souhaitée.
+    * @return pointeur sur la piece demandée, NULL sinon
+    */
+    Piece* getKing(bool white);
+
 
 };
 

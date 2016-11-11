@@ -53,13 +53,14 @@ int main( int argc, char** argv )
     // Le joueur blanc commence
     bool tourJb = true;
     bool tourOK = false;
+    int gameOver;
     int position_x, postion_y;
 
     jb.placerPieces(e);
     jn.placerPieces(e);
 
     cout << "---------------------" << endl;
-    cout << "Bienvenue sur l'echuiquier de la DoomPr0gTeam " << endl;
+    cout << "Bienvenue sur l'echiquier de la DoomPr0gTeam " << endl;
     cout << "---------------------" << endl;
 
     while (true) // Fin de tour à gérer TODO
@@ -72,7 +73,8 @@ int main( int argc, char** argv )
         saisie(position_x, postion_y);
         Piece *piece = e.getPiece(position_x, postion_y);
 
-        while (piece == NULL || piece->isWhite() != tourJb) {
+        while (piece == NULL || piece->isWhite() != tourJb)
+        {
             cout << "Piece non existante ou ce n'est pas la votre" << endl;
             cout << "Merci de recommencer." << endl;
 
@@ -84,22 +86,32 @@ int main( int argc, char** argv )
         cout << "Destination :" << endl;
         saisie(position_x, postion_y);
 
-        if (!e.deplacer(piece, position_x, postion_y)) {
+        if (!e.deplacer(piece, position_x, postion_y))
+        {
             cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
             tourOK = false;
-        } else {
+        }
+        else
+        {
             tourOK = true;
         }
 
-        if (tourOK) {
-            // Il faut check s'il s'agit de la fin de partie. TODO
+        if (tourOK)
+        {
+            gameOver = e.gameOver();
+            if (gameOver != 0)
+            {
+                cout << "Bravo Joueur " << (gameOver == 1 ? "Blanc":"Noir") <<", tu as gagne !"<<endl;
+                exit(0);
+            }
 
             // Le tour s'est bien passé, joueur suivant !
             tourJb = !tourJb;
-        } else {
+        }
+        else
+        {
             // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
             cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
         }
-
     }
 }
