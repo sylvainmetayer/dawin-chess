@@ -117,6 +117,8 @@ public:
     */
     Piece* getKing(bool white);
 
+    bool checkChessMat(Joueur& joueur);
+
 };
 
 #endif // !defined Echiquier_h

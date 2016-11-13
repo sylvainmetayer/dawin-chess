@@ -40,6 +40,71 @@ void saisie(int &x, int &y)
     read_choice(y);
 }
 
+void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
+{
+
+    bool whiteTurn = joueur.isWhite() == true ? true : false;
+    int position_x, position_y;
+    Piece* tmpking = e.getKing(whiteTurn);
+
+    cout << "Attention joueur " << (whiteTurn == true ? "blanc":"noir" ) << ", vous etes en echec" << endl;
+
+    // On modifie les règles du jeu (erreur de saisie, d'attention, ...)
+    int untilMat = 3;
+    cout << "Il vous reste " << untilMat << "essai(s) avant d'etre echec et mat" << endl;
+
+    while(joueur.onChess && untilMat > 0)
+    {
+
+        cout << "Selectionner la piece a deplacer :" << endl;
+        saisie(position_x, position_y);
+        Piece *piece = e.getPiece(position_x, position_y);
+
+        while (piece == NULL || piece->isWhite() != whiteTurn)
+        {
+            cout << "Piece non existante ou ce n'est pas la votre" << endl;
+            cout << "Merci de recommencer." << endl;
+
+            saisie(position_x, position_y);
+            piece = e.getPiece(position_x, position_y);
+        }
+
+        piece->affiche();
+        cout << "Destination :" << endl;
+        saisie(position_x, position_y);
+
+        if (!e.deplacer(piece, position_x, position_y))
+        {
+            cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
+        }
+        else
+        {
+            if(piece->isWhite() == true)
+            {
+                Piece* otherKing = e.getKing(!whiteTurn);
+                int x_king = otherKing->x();
+                int y_king = otherKing->y();
+
+                if (whiteTurn == true && e.chess(&joueur, &autreJoueur, x_king, y_king) == true )
+                {
+                    // Tour joueur blanc et toujours en echec.
+                    untilMat--;
+                }
+                else if (whiteTurn == false && e.chess(&joueur, &autreJoueur, x_king, y_king) == true )
+                {
+                    // Tour joueur noir et toujours en echec.
+                    untilMat--;
+                }
+            }
+            else
+            {
+                cout << "Erreur "<<endl;
+                exit(1);
+            }
+        }
+    }
+}
+
 /**
  * Programme principal
  */
@@ -54,7 +119,7 @@ int main( int argc, char** argv )
     bool tourJb = true;
     bool tourOK = false;
     int gameOver;
-    int position_x, postion_y;
+    int position_x, position_y;
 
     jb.placerPieces(e);
     jn.placerPieces(e);
@@ -63,12 +128,13 @@ int main( int argc, char** argv )
     cout << "Bienvenue sur l'echiquier de la DoomPr0gTeam " << endl;
     cout << "---------------------" << endl;
 
-    while (true) // Fin de tour à gérer TODO
+    while (true)
     {
         cout << "---------" << endl;
         cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
         e.affiche();
 
+        // DEBUG
         cout << "Etat du jeu" << endl;
         cout << "Tour " << (tourJb == true ? "BLANC" : "NOIR") << endl;
         cout << "JB chessMat" << (jb.chessMat == true ? "O":"N") << endl;
@@ -76,131 +142,94 @@ int main( int argc, char** argv )
         cout << "JB onChess " << (jb.onChess == true ? "O" : "N") << endl;
         cout << "JN onChess " << (jn.onChess == true ? "O" : "N") << endl;
 
-        if(tourJb == true && jb.chessMat == true && jb.onChess == true) {
-            cout << "Joueur blanc, vous êtes echec et mat" << endl;
-            cout << "Joueur noir, vous avez gagné" << endl;
+        if (e.checkChessMat(jb))
+            exit(0);
+
+        if (e.checkChessMat(jn))
+            exit(0);
+
+        // Si le joueur blanc est en echec depuis un tour
+        if(tourJb == true && jb.onChess == true)
+        {
+            handleChess(e, jb, jn);
         }
-        else if(tourJb == false && jn.chessMat == true && jn.onChess == true) {
-            cout << "Joueur noir, vous êtes echec et mat" << endl;
-            cout << "Joueur blanc, vous avez gagné" << endl;
+        else if (tourJb == false && jn.onChess == true)
+        {
+            // Si le joueur noir est en echec depuis un tour.
+            handleChess(e, jn, jb);
         }
-        else if(tourJb == true && jb.onChess == true) { // Si le joueur est en echec
-            cout << "Attention joueur blanc, vous etes en echec" << endl;
-            Piece* tmpking = e.getKing(true);
-            int untilMat = 3;
-            cout << "Il vous reste " << untilMat << "essai(s) avant d'etre echec et mat" << endl;
+        else
+        {
+            // Tour normal.
+            cout << "Selectionner la piece a deplacer :" << endl;
+            saisie(position_x, position_y);
+            Piece *piece = e.getPiece(position_x, position_y);
 
-            while(jb.onChess && untilMat > 0) {
+            while (piece == NULL || piece->isWhite() != tourJb)
+            {
+                cout << "Piece non existante ou ce n'est pas la votre" << endl;
+                cout << "Merci de recommencer." << endl;
 
-                cout << "Selectionner la piece a deplacer :" << endl;
-                saisie(position_x, postion_y);
-                Piece *piece = e.getPiece(position_x, postion_y);
+                saisie(position_x, position_y);
+                piece = e.getPiece(position_x, position_y);
+            }
 
-                while (piece == NULL || piece->isWhite() != tourJb)
+            piece->affiche();
+            cout << "Destination :" << endl;
+            saisie(position_x, position_y);
+
+            if (!e.deplacer(piece, position_x, position_y))
+            {
+                cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
+                tourOK = false;
+            }
+            else
+            {
+                tourOK = true;
+                if(piece->isWhite() == true)
                 {
-                    cout << "Piece non existante ou ce n'est pas la votre" << endl;
-                    cout << "Merci de recommencer." << endl;
+                    Piece* otherKing = e.getKing(false);
+                    int x_king = otherKing->x();
+                    int y_king = otherKing->y();
+                    e.chess(&jb, &jn, x_king, y_king );
 
-                    saisie(position_x, postion_y);
-                    piece = e.getPiece(position_x, postion_y);
+                    if(jn.onChess == true)
+                    {
+
+                    }
                 }
-
-                piece->affiche();
-                cout << "Destination :" << endl;
-                saisie(position_x, postion_y);
-
-                if (!e.deplacer(piece, position_x, postion_y))
+                else if(piece->isBlack() == true)
                 {
-                    cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
-                    tourOK = false;
+                    Piece* otherKing = e.getKing(true);
+                    int x_king = otherKing->x();
+                    int y_king = otherKing->y();
+                    e.chess(&jn, &jb, x_king, y_king);
                 }
                 else
                 {
-                    tourOK = true;
-                    if(piece->isWhite() == true) {
-                        Piece* otherKing = e.getKing(false);
-                        int x_king = otherKing->x();
-                        int y_king = otherKing->y();
-                        e.chess(&jb, &jn, x_king, y_king );
-                        if(e.chess(&jb, &jn, x_king, y_king) == true ) {
-                            untilMat--;
-                        }
-                    } else {
-                        cout << "Erreur "<<endl;
-                        exit(1);
-                    }
-                }
-
-
-            }
-           // coupPossibleChess( tmpking);
-
-        }
-
-        cout << "Selectionner la piece a deplacer :" << endl;
-        saisie(position_x, postion_y);
-        Piece *piece = e.getPiece(position_x, postion_y);
-
-        while (piece == NULL || piece->isWhite() != tourJb)
-        {
-            cout << "Piece non existante ou ce n'est pas la votre" << endl;
-            cout << "Merci de recommencer." << endl;
-
-            saisie(position_x, postion_y);
-            piece = e.getPiece(position_x, postion_y);
-        }
-
-        piece->affiche();
-        cout << "Destination :" << endl;
-        saisie(position_x, postion_y);
-
-        if (!e.deplacer(piece, position_x, postion_y))
-        {
-            cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
-            tourOK = false;
-        }
-        else
-        {
-            tourOK = true;
-            if(piece->isWhite() == true) {
-                Piece* otherKing = e.getKing(false);
-                int x_king = otherKing->x();
-                int y_king = otherKing->y();
-                e.chess(&jb, &jn, x_king, y_king );
-
-                if(jn.onChess == true) {
-
+                    cout << "Erreur "<<endl;
+                    exit(1);
                 }
             }
-            else if(piece->isBlack() == true) {
-                Piece* otherKing = e.getKing(true);
-                int x_king = otherKing->x();
-                int y_king = otherKing->y();
-                e.chess(&jn, &jb, x_king, y_king);
-            } else {
-                cout << "Erreur "<<endl;
-                exit(1);
-            }
-        }
 
-        if (tourOK)
-        {
-            gameOver = e.gameOver();
-            if (gameOver != 0)
+            if (tourOK)
             {
-                cout << "Bravo Joueur " << (gameOver == 1 ? "Blanc":"Noir") <<", tu as gagne !"<<endl;
-                exit(0);
-            }
+                gameOver = e.gameOver();
+                if (gameOver != 0)
+                {
+                    cout << "Bravo Joueur " << (gameOver == 1 ? "Blanc":"Noir") <<", tu as gagne !"<<endl;
+                    exit(0);
+                }
 
-            // Le tour s'est bien passé, joueur suivant !
-            tourJb = !tourJb;
-        }
-        else
-        {
-            // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
-            cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
+                // Le tour s'est bien passé, joueur suivant !
+                tourJb = !tourJb;
+            }
+            else
+            {
+                // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
+                cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
+            }
         }
     }
-
     return 0;
 }
