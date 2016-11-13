@@ -54,8 +54,9 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     bool depOK = true;
 
     if(_x == x && _y < y) {
-        for(i = (_y + 1) ; i < y+1; i++) {
+        for(i = (_y + 1) ; i < y-1; i++) {
             if(e.getPiece(x, i) != 0) {
+                    cout << "Cas 1"<< endl;
                 depOK = false;
                 break;
             }
@@ -63,8 +64,9 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_x == x && _y > y) {
-        for(i = (_y - 1); i > y-1; i--) {
+        for(i = (_y - 1); i > y+1; i--) {
             if(e.getPiece(x, i) != 0) {
+                    cout << "Cas 2"<< endl;
                 depOK = false;
                 break;
             }
@@ -72,8 +74,9 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_y == y && _x < x) {
-        for(i = (_x + 1); i < y+1; i++) {
+        for(i = (_x + 1); i < y-1; i++) {
             if(e.getPiece(i, y) != 0) {
+                    cout << "Cas 3"<< endl;
                 depOK = false;
                 break;
             }
@@ -81,8 +84,9 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     }
 
     if(_y == y && _x > x) {
-        for(i = (_x - 1); i > y-1; i--) {
+        for(i = (_x - 1); i > y+1; i--) {
             if(e.getPiece(i, y) != 0) {
+                    cout << "Cas 4"<< endl;
                 depOK = false;
                 break;
             }
