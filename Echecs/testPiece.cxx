@@ -69,6 +69,67 @@ int main( int argc, char** argv )
         cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
         e.affiche();
 
+        if(tourJb == true && jb.chessMat == true && jb.onChess == true) {
+            cout << "Joueur blanc, vous êtes echec et mat" << endl;
+            cout << "Joueur noir, vous avez gagné" << endl;
+        }
+        else if(tourJb == false && jn.chessMat == true && jn.onChess == true) {
+            cout << "Joueur noir, vous êtes echec et mat" << endl;
+            cout << "Joueur blanc, vous avez gagné" << endl;
+        }
+        else if(tourJb == true && jb.onChess == true) { // Si le joueur est en echec
+            cout << "Attention joueur blanc, vous etes en echec" << endl;
+            Piece* tmpking = e.getKing(true);
+            int untilMat = 3;
+            cout << "Il vous reste " << untilMat << "essai(s) avant d'etre echec et mat" << endl;
+
+            while(jb.onChess && untilMat > 0) {
+
+                cout << "Selectionner la piece a deplacer :" << endl;
+                saisie(position_x, postion_y);
+                Piece *piece = e.getPiece(position_x, postion_y);
+
+                while (piece == NULL || piece->isWhite() != tourJb)
+                {
+                    cout << "Piece non existante ou ce n'est pas la votre" << endl;
+                    cout << "Merci de recommencer." << endl;
+
+                    saisie(position_x, postion_y);
+                    piece = e.getPiece(position_x, postion_y);
+                }
+
+                piece->affiche();
+                cout << "Destination :" << endl;
+                saisie(position_x, postion_y);
+
+                if (!e.deplacer(piece, position_x, postion_y))
+                {
+                    cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
+                    tourOK = false;
+                }
+                else
+                {
+                    tourOK = true;
+                    if(piece->isWhite() == true) {
+                        Piece* otherKing = e.getKing(false);
+                        int x_king = otherKing->x();
+                        int y_king = otherKing->y();
+                        e.chess(&jb, &jn, x_king, y_king );
+                        if(e.chess(&jb, &jn, x_king, y_king) == true ) {
+                            untilMat--;
+                        }
+                    } else {
+                        cout << "Erreur "<<endl;
+                        exit(1);
+                    }
+                }
+
+
+            }
+           // coupPossibleChess( tmpking);
+
+        }
+
         cout << "Selectionner la piece a deplacer :" << endl;
         saisie(position_x, postion_y);
         Piece *piece = e.getPiece(position_x, postion_y);
@@ -99,6 +160,10 @@ int main( int argc, char** argv )
                 int x_king = otherKing->x();
                 int y_king = otherKing->y();
                 e.chess(&jb, &jn, x_king, y_king );
+
+                if(jn.onChess == true) {
+
+                }
             }
             else if(piece->isBlack() == true) {
                 Piece* otherKing = e.getKing(true);

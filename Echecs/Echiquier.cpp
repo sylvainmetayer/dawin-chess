@@ -246,15 +246,18 @@ Piece* Echiquier::getKing(bool white)
     return 0;
 }
 
-int Echiquier::chess(Joueur *duTour, Joueur *tourSuivant, int x, int y) { // x et y = emplacement roi joueur tour suivant
+bool Echiquier::chess(Joueur *duTour, Joueur *tourSuivant, int x, int y) { // x et y = emplacement roi joueur tour suivant
 
+    bool isOnChess;
     for(unsigned int i=0; i< duTour->m_pieces.size(); ++i) {
          Piece* p = duTour->m_pieces[i];
 
          if( p->mouvementValide(*this, x, y) ==  true && p->deplacementOK(*this, x, y) == true) {
             tourSuivant->onChess = true;
+            isOnChess = true;
          } else {
             tourSuivant->onChess = false;
+            isOnChess = false;
          }
 
 

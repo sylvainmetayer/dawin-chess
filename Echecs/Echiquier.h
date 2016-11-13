@@ -99,7 +99,7 @@ public:
     * Cette fonction permet de savoir si le joueur du tour suivant sera en echec ou non
     *  x et y correspondent à la position du roi du joueur du tour suivant.
     */
-    int chess(Joueur *duTour, Joueur *tourSuivant, int x, int y);
+    bool chess(Joueur *duTour, Joueur *tourSuivant, int x, int y);
 
     /**
     * Cette fonction permet de savoir si la partie est finie ou non.
