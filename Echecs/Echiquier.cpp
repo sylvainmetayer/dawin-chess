@@ -264,7 +264,7 @@ bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y) {
             tourSuivant.setOnChess(true);
             isOnChess = true;
          } else {
-            tourSuivant.setOnChess(true);
+            tourSuivant.setOnChess(false);
             isOnChess = false;
          }
     }
