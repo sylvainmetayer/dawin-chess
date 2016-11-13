@@ -28,6 +28,12 @@ Reine::Reine(bool white) : Piece(4, (white?1:8), white ),
 bool Reine::deplacementOK(Echiquier &e, int x, int y)
 {
 
+    bool testFou, testTour;
+
+    testFou = Fou::deplacementOK(e,x,y);
+    testTour = Tour::deplacementOK(e,x,y);
+    return testFou || testTour;
+
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
 

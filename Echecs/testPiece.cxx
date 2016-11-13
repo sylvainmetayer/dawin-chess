@@ -90,10 +90,12 @@ void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
     {
         cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
     }
-
-    if (e.chess(autreJoueur, joueur, e.getKing(whiteTurn)->x(), e.getKing(!whiteTurn)->y() ) == true )
+    if (e.chess(joueur, autreJoueur, e.getKing(whiteTurn)->x(), e.getKing(!whiteTurn)->y() ) == true )
     {
         joueur.setChessMat(true);
+    } else {
+        joueur.setChessMat(false);
+        joueur.setOnChess(false);
     }
 }
 
