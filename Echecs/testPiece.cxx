@@ -49,59 +49,30 @@ void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
 
     cout << "Attention joueur " << (whiteTurn == true ? "blanc":"noir" ) << ", vous etes en echec" << endl;
 
-    // On modifie les règles du jeu (erreur de saisie, d'attention, ...)
-    int untilMat = 3;
-    cout << "Il vous reste " << untilMat << "essai(s) avant d'etre echec et mat" << endl;
+    cout << "Selectionner la piece a deplacer :" << endl;
+    saisie(position_x, position_y);
+    Piece *piece = e.getPiece(position_x, position_y);
 
-    while(joueur.getOnChess() && untilMat > 0)
+    while (piece == NULL || piece->isWhite() != whiteTurn)
     {
+        cout << "Piece non existante ou ce n'est pas la votre" << endl;
+        cout << "Merci de recommencer." << endl;
 
-        cout << "Selectionner la piece a deplacer :" << endl;
         saisie(position_x, position_y);
-        Piece *piece = e.getPiece(position_x, position_y);
+        piece = e.getPiece(position_x, position_y);
+    }
 
-        while (piece == NULL || piece->isWhite() != whiteTurn)
-        {
-            cout << "Piece non existante ou ce n'est pas la votre" << endl;
-            cout << "Merci de recommencer." << endl;
+    piece->affiche();
+    cout << "Destination :" << endl;
+    saisie(position_x, position_y);
 
-            saisie(position_x, position_y);
-            piece = e.getPiece(position_x, position_y);
-        }
+    if (!e.deplacer(piece, position_x, position_y))
+    {
+        cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
+    }
 
-        piece->affiche();
-        cout << "Destination :" << endl;
-        saisie(position_x, position_y);
-
-        if (!e.deplacer(piece, position_x, position_y))
-        {
-            cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
-        }
-        else
-        {
-            if(piece->isWhite() == true)
-            {
-                Piece* otherKing = e.getKing(!whiteTurn);
-                int x_king = otherKing->x();
-                int y_king = otherKing->y();
-
-                if (whiteTurn == true && e.chess(joueur, autreJoueur, x_king, y_king) == true )
-                {
-                    // Tour joueur blanc et toujours en echec.
-                    untilMat--;
-                }
-                else if (whiteTurn == false && e.chess(joueur, autreJoueur, x_king, y_king) == true )
-                {
-                    // Tour joueur noir et toujours en echec.
-                    untilMat--;
-                }
-            }
-            else
-            {
-                cout << "Erreur "<<endl;
-                exit(1);
-            }
-        }
+    if (e.chess(autreJoueur, joueur, e.getKing(whiteTurn)->x(), e.getKing(!whiteTurn)->y() ) == true )  {
+        joueur.setChessMat(true);
     }
 }
 
@@ -132,7 +103,6 @@ int main( int argc, char** argv )
     {
         cout << "---------" << endl;
         cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
-        e.affiche();
 
         // DEBUG
         cout << "Etat du jeu" << endl;
@@ -147,6 +117,8 @@ int main( int argc, char** argv )
 
         if (e.checkChessMat(jn))
             exit(0);
+
+        e.affiche();
 
         // Si le joueur blanc est en echec depuis un tour
         if(tourJb == true && jb.getOnChess() == true)
@@ -187,25 +159,19 @@ int main( int argc, char** argv )
             {
                 tourOK = true;
 
-                // Tout cela est inutile puisque vérifier au début de tour ?
-                if(piece->isWhite() == true)
+                if(tourJb == true)
                 {
                     Piece* otherKing = e.getKing(false);
                     int x_king = otherKing->x();
                     int y_king = otherKing->y();
                     e.chess(jb, jn, x_king, y_king );
                 }
-                else if(piece->isBlack() == true)
+                else
                 {
                     Piece* otherKing = e.getKing(true);
                     int x_king = otherKing->x();
                     int y_king = otherKing->y();
                     e.chess(jn, jb, x_king, y_king);
-                }
-                else
-                {
-                    cout << "Erreur "<<endl;
-                    exit(1);
                 }
             }
 

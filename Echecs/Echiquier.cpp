@@ -255,6 +255,7 @@ Piece* Echiquier::getKing(bool white)
 bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y) {
 
     bool isOnChess;
+    cout << "Coucou c'est moi" << endl;
 
     int limite = duTour.m_pieces.size();
     for(unsigned int i=0; i< limite; ++i) {
@@ -263,12 +264,14 @@ bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y) {
          if( p->mouvementValide(*this, x, y) ==  true && p->deplacementOK(*this, x, y) == true) {
             tourSuivant.setOnChess(true);
             isOnChess = true;
+            break;
+
          } else {
             tourSuivant.setOnChess(false);
             isOnChess = false;
          }
     }
-
+    cout << "isOnChess = " << isOnChess << endl;
     return isOnChess;
 }
 
