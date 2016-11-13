@@ -4,7 +4,6 @@
  * @file Fou.cxx
  */
 
-// A besoin de la declaration de la classe
 #include <iostream>
 #include <stdlib.h>
 
@@ -13,10 +12,7 @@
 
 using namespace std;
 
-Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white)
-{
-    //cout << "Construction Fou specialisee" << endl;
-}
+Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white) {}
 
 bool Fou::mouvementValide(Echiquier &e, int x, int y)
 {
@@ -40,7 +36,6 @@ bool Fou::mouvementValide(Echiquier &e, int x, int y)
     {
         if( _x < x && _y < y)   // test diagonal bas droit
         {
-            //cout << _x<<endl;
             tmpY = _y;
             for(i = (_x + 1); i < 9; i++)
             {
@@ -119,13 +114,10 @@ char Fou::myChar()
  */
 bool Fou::deplacementOK(Echiquier &e, int x, int y)
 {
-
-
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
     int tmpY = 0;
-
-    int i,j;
+    int i;
 
     bool depOK = true;
 

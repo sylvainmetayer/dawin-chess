@@ -87,3 +87,7 @@ void Joueur::setOnChess(bool onChess)
     this->onChess = onChess;
 }
 
+vector<Piece*> Joueur::getPieces() {
+    return this->m_pieces;
+}
+

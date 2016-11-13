@@ -4,10 +4,7 @@
 
 using namespace std;
 
-JoueurNoir::JoueurNoir() : Joueur(false)
-{
-    //cout << "Construction Joueur Noir par defaut" << endl;
-}
+JoueurNoir::JoueurNoir() : Joueur(false) {}
 
 bool JoueurNoir::isWhite()
 {

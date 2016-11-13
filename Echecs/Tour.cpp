@@ -10,10 +10,7 @@
 #include "Tour.h"
 using namespace std;
 
-Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white)
-{
-    //cout << "Construction Tour specialisee" << endl;
-}
+Tour::Tour(bool white, bool left) : Piece(left ? 1 : 8,white ? 1:8, white) {}
 
 bool Tour::mouvementValide(Echiquier &e, int x, int y)
 {
@@ -56,7 +53,6 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     if(_x == x && _y < y) {
         for(i = (_y + 1) ; i < y-1; i++) {
             if(e.getPiece(x, i) != 0) {
-                    cout << "Cas 1"<< endl;
                 depOK = false;
                 break;
             }
@@ -66,7 +62,6 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     if(_x == x && _y > y) {
         for(i = (_y - 1); i > y+1; i--) {
             if(e.getPiece(x, i) != 0) {
-                    cout << "Cas 2"<< endl;
                 depOK = false;
                 break;
             }
@@ -76,7 +71,6 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     if(_y == y && _x < x) {
         for(i = (_x + 1); i < y-1; i++) {
             if(e.getPiece(i, y) != 0) {
-                    cout << "Cas 3"<< endl;
                 depOK = false;
                 break;
             }
@@ -86,7 +80,6 @@ bool Tour::deplacementOK(Echiquier &e, int x, int y) {
     if(_y == y && _x > x) {
         for(i = (_x - 1); i > y+1; i--) {
             if(e.getPiece(i, y) != 0) {
-                    cout << "Cas 4"<< endl;
                 depOK = false;
                 break;
             }

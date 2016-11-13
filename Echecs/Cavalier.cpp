@@ -25,10 +25,7 @@ char Cavalier::myChar()
   return m_white?'C':'c';
 }
 
-Cavalier::Cavalier( bool white, bool left ) : Piece((left)?2:7,(white)?1:8,white)
-{
-  //cout << "Construction Cavalier specialisee" << endl;
-}
+Cavalier::Cavalier( bool white, bool left ) : Piece((left)?2:7,(white)?1:8,white) {}
 
 bool Cavalier::deplacementOK(Echiquier &e, int x, int y)
 {

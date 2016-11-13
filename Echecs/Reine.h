@@ -6,9 +6,6 @@
 #include "Tour.h"
 #include "Echiquier.h"
 
-//class Echiquier;
-// #include "Echiquier.h" problème de référence croisée
-
 class Reine : public Fou, public Tour
 {
 public:

@@ -16,7 +16,6 @@ using namespace std;
 Pion::Pion( bool white, int p ) : Piece(p,(white)?2:7,white)
 {
     this->first_move = true;
-    //cout << "Construction Pion specialisee" << endl;
 }
 
 // Suppression du const pour pouvoir modifier le pion au premier déplacement.
@@ -92,8 +91,8 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
 
     }
 
-    cout << "MoveOK : "<< (moveOK == true ? "VRAI":"FAUX") <<endl;
-    cout << "Prise possible " << ( prisePossible(e, x, y) ? "VRAI" : "FAUX")<<endl;
+    //cout << "MoveOK : "<< (moveOK == true ? "VRAI":"FAUX") <<endl;
+    //cout << "Prise possible " << ( prisePossible(e, x, y) ? "VRAI" : "FAUX")<<endl;
 
     if(prisePossible(e, x, y))
     {
@@ -117,7 +116,6 @@ char Pion::myChar()
 
 bool Pion::prisePossible(Echiquier &e, int x, int y)
 {
-
     // Position de la piece
     int _x = this->m_x;
     int _y = this->m_y;
@@ -153,22 +151,9 @@ bool Pion::prisePossible(Echiquier &e, int x, int y)
 
 bool Pion::deplacementOK(Echiquier &e, int x, int y)
 {
-
-    int _x = this->m_x; // Position de la piece
-    int _y = this->m_y;
-
-    bool depOK = false;
-    int i;
-
-    // FIXME On ne commit pas quand on ne finit pas une fonction :'(
-    // TODO Supprimer le return true une fois que la fonction sera corrigée.
+    // Cas particulier pour pion, la gestion du déplacement est faite dans mouvementValide.
+    // Cela est du au fait que la prise se fait en diagonale.
     return true;
-
-    if( _x != x && prisePossible(e, x, y) == true)
-    {
-    }
-
-    //if(this->)
 }
 
 char* Pion::getNomPiece()

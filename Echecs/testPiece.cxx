@@ -9,6 +9,7 @@
 using namespace std;
 
 // http://cpp.developpez.com/faq/cpp/?page=Manipulation-de-la-console#Comment-verifier-les-valeurs-saisies-avec-cin
+// Fonction tirée du site ci-dessus pour assurer une saisie sécurisée.
 bool read_choice( int & N )
 {
     while ( ! ( cin >> N ) || N < 1 || N > 8 )
@@ -32,6 +33,11 @@ bool read_choice( int & N )
     return true; // succès
 }
 
+/**
+* Fonction qui permet de saisir les valeurs x et y en appelant la saisie sécurisée.
+* @param x : la valeur x à saisir
+* @param y : la valeur y à saisir.
+*/
 void saisie(int &x, int &y)
 {
     cout << "x :";
@@ -40,12 +46,19 @@ void saisie(int &x, int &y)
     read_choice(y);
 }
 
+/**
+* Dans le cas ou l'on se trouve en échecs, cette fonction est appelée afin de gérer le cas.
+* Elle va demander au joueur en echec de jouer, et vérifier s'il est toujours en échec.
+* Si oui, alors il sera échec et mat.
+* @param e : l'échiquier
+* @param joueur : Le joueur en echec
+* @param autreJoueur : l'autre joueur
+*/
 void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
 {
 
     bool whiteTurn = joueur.isWhite() == true ? true : false;
     int position_x, position_y;
-    Piece* tmpking = e.getKing(whiteTurn);
 
     cout << "Attention joueur " << (whiteTurn == true ? "blanc":"noir" ) << ", vous etes en echec" << endl;
 
@@ -87,9 +100,10 @@ int main( int argc, char** argv )
     JoueurNoir jn;
 
     // Le joueur blanc commence
-    bool tourJb = true;
+    bool tourJoueurBlanc = true;
+
+
     bool tourOK = false;
-    int gameOver;
     int position_x, position_y;
 
     jb.placerPieces(e);
@@ -102,15 +116,15 @@ int main( int argc, char** argv )
     while (true)
     {
         cout << "---------" << endl;
-        cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
+        cout << "Tour joueur " << (tourJoueurBlanc ? "blanc" : "noir") << endl;
 
         // DEBUG
-        cout << "Etat du jeu" << endl;
-        cout << "Tour " << (tourJb == true ? "BLANC" : "NOIR") << endl;
-        cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;
-        cout << "JN chessMat" << (jn.getChessMat() == true ? "O":"N") << endl;
-        cout << "JB onChess " << (jb.getOnChess() == true ? "O" : "N") << endl;
-        cout << "JN onChess " << (jn.getOnChess() == true ? "O" : "N") << endl;
+        //cout << "Etat du jeu" << endl;
+        //cout << "Tour " << (tourJoueurBlanc == true ? "BLANC" : "NOIR") << endl;
+        //cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;
+        //cout << "JN chessMat" << (jn.getChessMat() == true ? "O":"N") << endl;
+        //cout << "JB onChess " << (jb.getOnChess() == true ? "O" : "N") << endl;
+        //cout << "JN onChess " << (jn.getOnChess() == true ? "O" : "N") << endl;
 
         if (e.checkChessMat(jb))
             exit(0);
@@ -120,14 +134,14 @@ int main( int argc, char** argv )
 
         e.affiche();
 
-        // Si le joueur blanc est en echec depuis un tour
-        if(tourJb == true && jb.getOnChess() == true)
+        // Si le joueur blanc est en echec
+        if(tourJoueurBlanc == true && jb.getOnChess() == true)
         {
             handleChess(e, jb, jn);
         }
-        else if (tourJb == false && jn.getOnChess() == true)
+        else if (tourJoueurBlanc == false && jn.getOnChess() == true)
         {
-            // Si le joueur noir est en echec depuis un tour.
+            // Si le joueur noir est en echec
             handleChess(e, jn, jb);
         }
         else
@@ -137,7 +151,7 @@ int main( int argc, char** argv )
             saisie(position_x, position_y);
             Piece *piece = e.getPiece(position_x, position_y);
 
-            while (piece == NULL || piece->isWhite() != tourJb)
+            while (piece == NULL || piece->isWhite() != tourJoueurBlanc)
             {
                 cout << "Piece non existante ou ce n'est pas la votre" << endl;
                 cout << "Merci de recommencer." << endl;
@@ -158,8 +172,7 @@ int main( int argc, char** argv )
             else
             {
                 tourOK = true;
-
-                if(tourJb == true)
+                if(tourJoueurBlanc == true)
                 {
                     Piece* otherKing = e.getKing(false);
                     int x_king = otherKing->x();
@@ -178,12 +191,12 @@ int main( int argc, char** argv )
             // Le tour s'est bien passé, joueur suivant !
             if (tourOK)
             {
-                tourJb = !tourJb;
+                tourJoueurBlanc = !tourJoueurBlanc;
             }
             else
             {
                 // Quelque chose ne s'est pas passé correctement, le joueur corrige son tour.
-                cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
+                cout << "Joueur " << (tourJoueurBlanc ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
             }
         }
     }

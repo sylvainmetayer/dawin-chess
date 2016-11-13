@@ -2,9 +2,7 @@
 #define Fou_h
 
 #include "Piece.h"
-
 class Echiquier;
-// #include "Echiquier.h" problème de référence croisée
 
 class Fou : virtual public Piece
 {

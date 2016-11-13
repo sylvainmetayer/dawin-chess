@@ -79,8 +79,7 @@ Echiquier::placer( Piece* p )
  * (case occupee, coordonnees invalides, piece vide, piece pas
  * presente au bon endroit sur l'echiquier)
  */
-bool
-Echiquier::deplacer( Piece* p, int x, int y )
+bool Echiquier::deplacer( Piece* p, int x, int y )
 {
 
     if (!this->caseLibre(*p, x,y))
@@ -125,8 +124,7 @@ Echiquier::deplacer( Piece* p, int x, int y )
  * @return 0 si aucune piece n'est sur cette case et le pointeur
  * vers la piece enlevee sinon.
  */
-Piece*
-Echiquier::enleverPiece( int x, int y )
+Piece* Echiquier::enleverPiece( int x, int y )
 {
     Piece *tmp;
     tmp = m_cases[(x-1)+8*(y-1)];
@@ -139,8 +137,7 @@ Echiquier::enleverPiece( int x, int y )
  * les blanches si elles sont vides, et avec B pour les pieces
  * blanches et N pour les pieces noires.
  */
-void
-Echiquier::affiche()
+void Echiquier::affiche()
 {
     cout << endl << "  12345678" << endl;
     for ( int y = 1; y <= 8; ++y )
@@ -153,7 +150,7 @@ Echiquier::affiche()
             if ( p == 0 )
                 c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
             else
-                c = p->myChar();//p->isWhite() ? 'B' : 'N';
+                c = p->myChar();
             cout << c;
         }
         cout << " " << y << endl;
@@ -164,12 +161,15 @@ Echiquier::affiche()
 /**
 * Permet de savoir si la pièce peux être
 * prise ou non par une autre piece
+* @param p : la piece qui se déplace
+* @param x : coordonnées x de déplacement
+* @param y : coordonnées y de déplacement
+*
+* @return true si la prise est possible, false sinon.
 **/
 bool Echiquier::caseLibre(Piece &p, int x, int y)
 {
-
     cout << "Case Libre : ";
-    // Récupération de la pièce à la position données
     Piece* p1 = getPiece(x, y);
 
     if(p1 == 0)
@@ -223,6 +223,11 @@ bool Echiquier::prise(Piece *eater, int x, int y)
     return true;
 }
 
+/**
+* Retourne le roi du joueur donné
+*@param white : true si on veut le roi blanc, false sinon.
+*@return pointeur sur le roi demandé, 0 sinon.
+*/
 Piece* Echiquier::getKing(bool white)
 {
     Piece* tmp;
@@ -247,57 +252,54 @@ Piece* Echiquier::getKing(bool white)
 }
 
 /**
+* Cette fonction permet de savoir si le joueur du tour suivant sera en echec ou non
+* x et y correspondent à la position du roi du joueur du tour suivant.
 *
-*@param x : coordonnées x du roi adverse.
-*@param y : coordonnées y du roi adverse
+* @param x : coordonnées x du roi adverse.
+* @param y : coordonnées y du roi adverse
+* @param duTour : joueur actuel.
+* @param tourSuivant : Joueur suivant.
+* @return true si le joueur tourSuivant est en echec, false sinon.
 *
 */
-bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y) {
-
+bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y)
+{
     bool isOnChess;
-    cout << "Coucou c'est moi" << endl;
 
-    int limite = duTour.m_pieces.size();
-    for(unsigned int i=0; i< limite; ++i) {
-         Piece* p = duTour.m_pieces[i];
+    int limite = duTour.getPieces().size();
+    for(int i=0; i< limite; ++i)
+    {
+        Piece* p = duTour.getPieces()[i];
 
-         if( p->mouvementValide(*this, x, y) ==  true && p->deplacementOK(*this, x, y) == true) {
+        if( p->mouvementValide(*this, x, y) ==  true && p->deplacementOK(*this, x, y) == true)
+        {
             tourSuivant.setOnChess(true);
             isOnChess = true;
             break;
 
-         } else {
+        }
+        else
+        {
             tourSuivant.setOnChess(false);
             isOnChess = false;
-         }
+        }
     }
-    cout << "isOnChess = " << isOnChess << endl;
+
     return isOnChess;
 }
 
-bool Echiquier::checkChessMat(Joueur& joueur) {
-    if (joueur.getChessMat() == true && joueur.getOnChess() == true) {
+/**
+* Cette fonction permet de savoir si un joueur est echec et mat.
+* @param joueur le joueur que l'on souhaite vérifier.
+* @return true ou false selon que le joueur est echec ou mat.
+*/
+bool Echiquier::checkChessMat(Joueur& joueur)
+{
+    if (joueur.getChessMat() == true && joueur.getOnChess() == true)
+    {
         cout << "Le joueur  " << (joueur.isWhite() ? "Blanc" : "Noir") << " est echec et mat et a perdu." << endl;
         return true;
     }
 
     return false;
-}
-
-int Echiquier::gameOver()
-{
-    Piece *roiBlanc = this->getKing(true);
-    Piece *roiNoir = this->getKing(false);
-
-    // Debug
-    if (roiBlanc != 0)
-        roiBlanc->affiche();
-
-    if(roiNoir != 0)
-        roiNoir->affiche();
-
-    // TODO finir cette fonction.
-
-
-    return 0;
 }

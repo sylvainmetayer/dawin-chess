@@ -8,7 +8,6 @@
 #define Piece_h
 
 class Echiquier;
-// #include "Echiquier.h" // problème de référence croisée
 
 /**
  * Declaration d'une classe modélisant une piece de jeu d'echec.
@@ -33,7 +32,6 @@ public:
     bool isWhite() const;
     bool isBlack() const;
     void affiche();
-    //const Piece & plusforte(const Piece & autre) const;
     virtual bool mouvementValide(Echiquier &e, int x, int y);
     virtual char myChar();
     virtual bool deplacementOK(Echiquier &e, int x, int y);

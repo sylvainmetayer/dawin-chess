@@ -2,10 +2,7 @@
 #define Roi_h
 
 #include "Piece.h"
-
-//#include "Echiquier.h"
 class Echiquier;
-// #include "Echiquier.h" problème de référence croisée
 
 class Roi : public Piece
 {

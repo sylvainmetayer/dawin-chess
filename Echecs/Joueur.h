@@ -23,13 +23,10 @@ using namespace std;
 class Joueur
 {
     protected:
-        //Piece m_pieces[16];
-        //vector<Piece *> m_pieces;
         bool onChess; //Permet de savoir si le joueur est en echec
         bool chessMat; // Permet de savoir sir le joueur est en échec et mat
-    public:
-         //Piece m_pieces[16];
         vector<Piece *> m_pieces;
+    public:
         Joueur();
         ~Joueur();
         Joueur(bool white);
@@ -40,6 +37,7 @@ class Joueur
         bool getChessMat();
         void setChessMat(bool chessMat);
         void setOnChess(bool onChess);
+        vector<Piece*> getPieces();
 
 };
 

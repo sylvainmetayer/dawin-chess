@@ -3,10 +3,8 @@
 
 #include "Piece.h"
 #include "Echiquier.h"
-//#include "Piece.h"
 
 class Echiquier;
-// #include "Echiquier.h" problème de référence croisée
 
 class Tour : virtual public Piece
 {
