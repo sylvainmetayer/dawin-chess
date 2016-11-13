@@ -25,6 +25,8 @@ class Joueur
     protected:
         //Piece m_pieces[16];
         //vector<Piece *> m_pieces;
+        bool onChess; //Permet de savoir si le joueur est en echec
+        bool chessMat; // Permet de savoir sir le joueur est en échec et mat
     public:
          //Piece m_pieces[16];
         vector<Piece *> m_pieces;
@@ -34,8 +36,11 @@ class Joueur
         void affiche();
         virtual bool isWhite()=0;
         void placerPieces(Echiquier &e);
-        bool onChess; //Permet de savoir si le joueur est en echec
-        bool chessMat; // Permet de savoir sir le joueur est en échec et mat
+        bool getOnChess();
+        bool getChessMat();
+        void setChessMat(bool chessMat);
+        void setOnChess(bool onChess);
+
 };
 
 #endif

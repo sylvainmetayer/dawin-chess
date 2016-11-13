@@ -73,3 +73,23 @@ void Joueur::placerPieces(Echiquier &e)
     }
 }
 
+bool Joueur::getOnChess()
+{
+    return this->onChess;
+}
+
+bool Joueur::getChessMat()
+{
+    return this->chessMat;
+}
+
+void Joueur::setChessMat(bool chessMat)
+{
+    this->chessMat = chessMat;
+}
+
+void Joueur::setOnChess(bool onChess)
+{
+    this->onChess = onChess;
+}
+

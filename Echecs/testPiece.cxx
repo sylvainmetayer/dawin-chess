@@ -53,7 +53,7 @@ void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
     int untilMat = 3;
     cout << "Il vous reste " << untilMat << "essai(s) avant d'etre echec et mat" << endl;
 
-    while(joueur.onChess && untilMat > 0)
+    while(joueur.getOnChess() && untilMat > 0)
     {
 
         cout << "Selectionner la piece a deplacer :" << endl;
@@ -85,12 +85,12 @@ void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
                 int x_king = otherKing->x();
                 int y_king = otherKing->y();
 
-                if (whiteTurn == true && e.chess(&joueur, &autreJoueur, x_king, y_king) == true )
+                if (whiteTurn == true && e.chess(joueur, autreJoueur, x_king, y_king) == true )
                 {
                     // Tour joueur blanc et toujours en echec.
                     untilMat--;
                 }
-                else if (whiteTurn == false && e.chess(&joueur, &autreJoueur, x_king, y_king) == true )
+                else if (whiteTurn == false && e.chess(joueur, autreJoueur, x_king, y_king) == true )
                 {
                     // Tour joueur noir et toujours en echec.
                     untilMat--;
@@ -137,10 +137,10 @@ int main( int argc, char** argv )
         // DEBUG
         cout << "Etat du jeu" << endl;
         cout << "Tour " << (tourJb == true ? "BLANC" : "NOIR") << endl;
-        cout << "JB chessMat" << (jb.chessMat == true ? "O":"N") << endl;
-        cout << "JN chessMat" << (jn.chessMat == true ? "O":"N") << endl;
-        cout << "JB onChess " << (jb.onChess == true ? "O" : "N") << endl;
-        cout << "JN onChess " << (jn.onChess == true ? "O" : "N") << endl;
+        cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;
+        cout << "JN chessMat" << (jn.getChessMat() == true ? "O":"N") << endl;
+        cout << "JB onChess " << (jb.getOnChess() == true ? "O" : "N") << endl;
+        cout << "JN onChess " << (jn.getOnChess() == true ? "O" : "N") << endl;
 
         if (e.checkChessMat(jb))
             exit(0);
@@ -149,11 +149,11 @@ int main( int argc, char** argv )
             exit(0);
 
         // Si le joueur blanc est en echec depuis un tour
-        if(tourJb == true && jb.onChess == true)
+        if(tourJb == true && jb.getOnChess() == true)
         {
             handleChess(e, jb, jn);
         }
-        else if (tourJb == false && jn.onChess == true)
+        else if (tourJb == false && jn.getOnChess() == true)
         {
             // Si le joueur noir est en echec depuis un tour.
             handleChess(e, jn, jb);
@@ -186,12 +186,14 @@ int main( int argc, char** argv )
             else
             {
                 tourOK = true;
-                if(piece->isWhite() == true)
+
+                // Tout cela est inutile puisque vérifier au début de tour ?
+                /*if(piece->isWhite() == true)
                 {
                     Piece* otherKing = e.getKing(false);
                     int x_king = otherKing->x();
                     int y_king = otherKing->y();
-                    e.chess(&jb, &jn, x_king, y_king );
+                    e.chess(jb, jn, x_king, y_king );
 
                     if(jn.onChess == true)
                     {
@@ -209,7 +211,7 @@ int main( int argc, char** argv )
                 {
                     cout << "Erreur "<<endl;
                     exit(1);
-                }
+                }*/
             }
 
             if (tourOK)

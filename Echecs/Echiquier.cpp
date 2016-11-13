@@ -252,17 +252,19 @@ Piece* Echiquier::getKing(bool white)
 *@param y : coordonnées y du roi adverse
 *
 */
-bool Echiquier::chess(Joueur *duTour, Joueur *tourSuivant, int x, int y) {
+bool Echiquier::chess(Joueur& duTour, Joueur& tourSuivant, int x, int y) {
 
     bool isOnChess;
-    for(unsigned int i=0; i< duTour->m_pieces.size(); ++i) {
-         Piece* p = duTour->m_pieces[i];
+
+    int limite = duTour.m_pieces.size();
+    for(unsigned int i=0; i< limite; ++i) {
+         Piece* p = duTour.m_pieces[i];
 
          if( p->mouvementValide(*this, x, y) ==  true && p->deplacementOK(*this, x, y) == true) {
-            tourSuivant->onChess = true;
+            tourSuivant.setOnChess(true);
             isOnChess = true;
          } else {
-            tourSuivant->onChess = false;
+            tourSuivant.setOnChess(true);
             isOnChess = false;
          }
     }
@@ -271,7 +273,7 @@ bool Echiquier::chess(Joueur *duTour, Joueur *tourSuivant, int x, int y) {
 }
 
 bool Echiquier::checkChessMat(Joueur& joueur) {
-    if (joueur.chessMat == true && joueur.onChess == true) {
+    if (joueur.getChessMat() == true && joueur.getOnChess() == true) {
         cout << "Le joueur  " << (joueur.isWhite() ? "Blanc" : "Noir") << " est echec et mat et a perdu." << endl;
         return true;
     }
