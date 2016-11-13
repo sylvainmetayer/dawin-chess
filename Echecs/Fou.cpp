@@ -16,87 +16,21 @@ Fou::Fou(bool white, bool left) : Piece( left ? 3 : 6,white ? 1:8, white) {}
 
 bool Fou::mouvementValide(Echiquier &e, int x, int y)
 {
-    bool mooveOK = false; // Valeur a retourne a la fin de la fonction
-    bool isOver = false; // bool pour le while
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
 
-    int tmpY = 0;
-    int i;
-
     if ((x<9 && x>0 && y<9 && y>0) == false)
     {
-        mooveOK = false;
+        return false;
     }
 
-    if(_x == x || _y == y)
-        mooveOK = false;
+    int diffX = abs(_x - x);
+    int diffY = abs(_y - y);
 
-    while(!isOver)
-    {
-        if( _x < x && _y < y)   // test diagonal bas droit
-        {
-            tmpY = _y;
-            for(i = (_x + 1); i < 9; i++)
-            {
-                tmpY = tmpY +1;
-                if( i == x && tmpY == y)
-                {
-                    mooveOK = true;
-                }
-            }
-            isOver = true;
-        }
-        else if( _x > x && _y < y)   // test diagonal bas gauche
-        {
-            tmpY = _y;
-            for(i = (_x - 1); i < 0; i--)
-            {
-                tmpY = tmpY +1;
-                if( i == x && tmpY == y)
-                {
-                    mooveOK = true;
-                }
-            }
-            isOver = true;
-        }
+    if (diffX == diffY)
+        return true;
 
-        else if( _x > x && _y > y)   // test diagonal haut gauche
-        {
-            tmpY = _y;
-            for(i = (_x - 1); i < 0; i--)
-            {
-                tmpY = tmpY - 1;
-                if( i == x && tmpY == y)
-                {
-                    mooveOK = true;
-                }
-            }
-            isOver = true;
-        }
-
-        else if( _x > x && _y > y)   // test diagonal haut droit
-        {
-            tmpY = _y;
-            for(i = (_x + 1); i < 9; i++)
-            {
-                tmpY = tmpY - 1;
-                if( i == x && tmpY == y)
-                {
-                    mooveOK = true;
-                }
-            }
-            isOver = true;
-        }
-        else
-        {
-            isOver = true;
-        }
-
-    }
-
-    return mooveOK;
-
+    return false;
 }
 
 char Fou::myChar()
