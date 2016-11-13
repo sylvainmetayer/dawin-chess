@@ -9,6 +9,8 @@
 
 #include "Piece.h"
 
+class Joueur;
+
 /**
  * Declaration d'une classe modélisant une piece de jeu d'echec.
  */
@@ -94,6 +96,12 @@ public:
     bool prise(Piece *eater, int x, int y);
 
     /**
+    * Cette fonction permet de savoir si le joueur du tour suivant sera en echec ou non
+    *  x et y correspondent à la position du roi du joueur du tour suivant.
+    */
+    int chess(Joueur *duTour, Joueur *tourSuivant, int x, int y);
+
+    /**
     * Cette fonction permet de savoir si la partie est finie ou non.
     * @return 0 si la partie n'est pas finie, 1 si le joueur blanc a gagné
     * et 2 si le joueur noir a gagné.
@@ -108,7 +116,6 @@ public:
     * @return pointeur sur la piece demandée, NULL sinon
     */
     Piece* getKing(bool white);
-
 
 };
 

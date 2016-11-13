@@ -24,14 +24,18 @@ class Joueur
 {
     protected:
         //Piece m_pieces[16];
-        vector<Piece *> m_pieces;
+        //vector<Piece *> m_pieces;
     public:
+         //Piece m_pieces[16];
+        vector<Piece *> m_pieces;
         Joueur();
         ~Joueur();
         Joueur(bool white);
         void affiche();
         virtual bool isWhite()=0;
         void placerPieces(Echiquier &e);
+        bool onChess; //Permet de savoir si le joueur est en echec
+        bool chessMat; // Permet de savoir sir le joueur est en échec et mat
 };
 
 #endif

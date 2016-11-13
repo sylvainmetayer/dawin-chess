@@ -94,6 +94,21 @@ int main( int argc, char** argv )
         else
         {
             tourOK = true;
+            if(piece->isWhite() == true) {
+                Piece* otherKing = e.getKing(false);
+                int x_king = otherKing->x();
+                int y_king = otherKing->y();
+                e.chess(&jb, &jn, x_king, y_king );
+            }
+            else if(piece->isBlack() == true) {
+                Piece* otherKing = e.getKing(true);
+                int x_king = otherKing->x();
+                int y_king = otherKing->y();
+                e.chess(&jn, &jb, x_king, y_king);
+            } else {
+                cout << "Erreur "<<endl;
+                exit(1);
+            }
         }
 
         if (tourOK)
@@ -114,4 +129,6 @@ int main( int argc, char** argv )
             cout << "Joueur " << (tourJb ? "blanc" : "noir") << ", votre tour n'est pas valide. Recommencez"<< endl;
         }
     }
+
+    return 0;
 }
