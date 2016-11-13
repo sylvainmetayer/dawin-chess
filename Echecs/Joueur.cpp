@@ -11,6 +11,9 @@ Joueur::Joueur()
 
 Joueur::Joueur(bool white)
 {
+
+    this->onChess = false;
+    this->chessMat = false;
     //cout << "constructeur specialise joueur" <<endl;
 
     Roi *r = new Roi(white);

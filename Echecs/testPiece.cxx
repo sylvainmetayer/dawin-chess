@@ -69,6 +69,13 @@ int main( int argc, char** argv )
         cout << "Tour joueur " << (tourJb ? "blanc" : "noir") << endl;
         e.affiche();
 
+        cout << "Etat du jeu" << endl;
+        cout << "Tour " << (tourJb == true ? "BLANC" : "NOIR") << endl;
+        cout << "JB chessMat" << (jb.chessMat == true ? "O":"N") << endl;
+        cout << "JN chessMat" << (jn.chessMat == true ? "O":"N") << endl;
+        cout << "JB onChess " << (jb.onChess == true ? "O" : "N") << endl;
+        cout << "JN onChess " << (jn.onChess == true ? "O" : "N") << endl;
+
         if(tourJb == true && jb.chessMat == true && jb.onChess == true) {
             cout << "Joueur blanc, vous êtes echec et mat" << endl;
             cout << "Joueur noir, vous avez gagné" << endl;
