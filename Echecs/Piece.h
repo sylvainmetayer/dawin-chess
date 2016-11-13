@@ -7,6 +7,7 @@
 #if !defined Piece_h
 #define Piece_h
 
+#include "debug.h"
 class Echiquier;
 
 /**

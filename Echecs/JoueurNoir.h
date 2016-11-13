@@ -12,7 +12,7 @@
 #include "Fou.h"
 #include "Cavalier.h"
 #include "Pion.h"
-
+#include "debug.h"
 
 class JoueurNoir : public Joueur
 {

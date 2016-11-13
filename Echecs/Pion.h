@@ -2,7 +2,7 @@
 #define Pion_h
 
 #include "Piece.h"
-
+#include "debug.h"
 #include "Echiquier.h"
 
 class Pion : public Piece

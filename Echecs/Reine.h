@@ -5,6 +5,7 @@
 #include "Fou.h"
 #include "Tour.h"
 #include "Echiquier.h"
+#include "debug.h"
 
 class Reine : public Fou, public Tour
 {

@@ -7,6 +7,7 @@
 #if !defined Echiquier_h
 #define Echiquier_h
 
+#include "debug.h"
 #include "Piece.h"
 
 class Joueur;

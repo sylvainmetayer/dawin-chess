@@ -2,6 +2,7 @@
 #define Fou_h
 
 #include "Piece.h"
+#include "debug.h"
 class Echiquier;
 
 class Fou : virtual public Piece

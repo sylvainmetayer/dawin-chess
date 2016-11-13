@@ -8,7 +8,6 @@ Joueur::Joueur() {}
 
 Joueur::Joueur(bool white)
 {
-
     this->setOnChess(false);
     this->setChessMat(false);
 
@@ -45,7 +44,8 @@ Joueur::Joueur(bool white)
 
 Joueur::~Joueur()
 {
-    cout << "Destruction Joueur" << endl;
+    if (DEBUG)
+        cout << "Destruction Joueur" << endl;
 }
 
 void Joueur::affiche()

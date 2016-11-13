@@ -3,6 +3,7 @@
 
 #include "Piece.h"
 class Echiquier;
+#include "debug.h"
 
 class Roi : public Piece
 {

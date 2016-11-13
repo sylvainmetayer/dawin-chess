@@ -3,7 +3,7 @@
 
 #include "Piece.h"
 #include "Echiquier.h"
-
+#include "debug.h"
 class Echiquier;
 
 class Tour : virtual public Piece

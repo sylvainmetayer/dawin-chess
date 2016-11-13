@@ -102,7 +102,6 @@ int main( int argc, char** argv )
     // Le joueur blanc commence
     bool tourJoueurBlanc = true;
 
-
     bool tourOK = false;
     int position_x, position_y;
 
@@ -118,13 +117,15 @@ int main( int argc, char** argv )
         cout << "---------" << endl;
         cout << "Tour joueur " << (tourJoueurBlanc ? "blanc" : "noir") << endl;
 
-        // DEBUG
-        //cout << "Etat du jeu" << endl;
-        //cout << "Tour " << (tourJoueurBlanc == true ? "BLANC" : "NOIR") << endl;
-        //cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;
-        //cout << "JN chessMat" << (jn.getChessMat() == true ? "O":"N") << endl;
-        //cout << "JB onChess " << (jb.getOnChess() == true ? "O" : "N") << endl;
-        //cout << "JN onChess " << (jn.getOnChess() == true ? "O" : "N") << endl;
+        if (DEBUG) {
+            cout << "Etat du jeu" << endl;
+            cout << "Tour " << (tourJoueurBlanc == true ? "BLANC" : "NOIR") << endl;
+            cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;
+            cout << "JN chessMat" << (jn.getChessMat() == true ? "O":"N") << endl;
+            cout << "JB onChess " << (jb.getOnChess() == true ? "O" : "N") << endl;
+            cout << "JN onChess " << (jn.getOnChess() == true ? "O" : "N") << endl;
+        }
+
 
         if (e.checkChessMat(jb))
             exit(0);
@@ -134,14 +135,16 @@ int main( int argc, char** argv )
 
         e.affiche();
 
-        // Si le joueur blanc est en echec
         if(tourJoueurBlanc == true && jb.getOnChess() == true)
         {
+            if (DEBUG)
+                cout << "JB en echec"<<endl;
             handleChess(e, jb, jn);
         }
         else if (tourJoueurBlanc == false && jn.getOnChess() == true)
         {
-            // Si le joueur noir est en echec
+            if (DEBUG)
+                cout << "JN en echec"<<endl;
             handleChess(e, jn, jb);
         }
         else

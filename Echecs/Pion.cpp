@@ -7,7 +7,6 @@
 // A besoin de la declaration de la classe
 #include <iostream>
 #include <stdlib.h>
-#include <assert.h>
 
 #include "Pion.h"
 
@@ -91,18 +90,22 @@ bool Pion::mouvementValide(Echiquier & e, int x, int y)
 
     }
 
-    //cout << "MoveOK : "<< (moveOK == true ? "VRAI":"FAUX") <<endl;
-    //cout << "Prise possible " << ( prisePossible(e, x, y) ? "VRAI" : "FAUX")<<endl;
+    if (DEBUG) {
+        cout << "MoveOK : "<< (moveOK == true ? "VRAI":"FAUX") <<endl;
+        cout << "Prise possible " << ( prisePossible(e, x, y) ? "VRAI" : "FAUX")<<endl;
+    }
 
     if(prisePossible(e, x, y))
     {
-        // Regle particuliere de deplacement pour le pion pour prendre une piece
+        if (DEBUG)
+            cout << "Regle particuliere de deplacement pour le pion pour prendre une piece"<<endl;
         return true;
     }
 
     if (!prisePossible(e, x, y) && diffX != 0)
     {
-        // Un pion ne peut pas se déplacer en diagonale sans prendre de piece !
+        if (DEBUG)
+            cout << "Un pion ne peut pas se deplacer en diagonale sans prendre de piece !" << endl;
         return false;
     }
 

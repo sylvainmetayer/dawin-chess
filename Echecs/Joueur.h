@@ -15,6 +15,7 @@
 #include "Fou.h"
 #include "Cavalier.h"
 #include "Pion.h"
+#include "debug.h"
 
 #include <vector>
 

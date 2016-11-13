@@ -89,19 +89,22 @@ bool Echiquier::deplacer( Piece* p, int x, int y )
 
     if (!p->mouvementValide(*this,x,y))
     {
-        cout << "MouvementValide Fail"<< endl;
+        if (DEBUG)
+            cout << "MouvementValide Fail"<< endl;
         return false;
     }
 
     if (!p->deplacementOK(*this, x,y))
     {
-        cout << "DeplacementOK Fail"<<endl;
+        if (DEBUG)
+            cout << "DeplacementOK Fail"<<endl;
         return false;
     }
 
     if (!this->prise(p, x,y))
     {
-        cout << "Prise Fail" << endl;
+        if (DEBUG)
+            cout << "Prise Fail" << endl;
         return false;
     }
 
@@ -169,12 +172,14 @@ void Echiquier::affiche()
 **/
 bool Echiquier::caseLibre(Piece &p, int x, int y)
 {
-    cout << "Case Libre : ";
+    if (DEBUG)
+        cout << "Case Libre : ";
     Piece* p1 = getPiece(x, y);
 
     if(p1 == 0)
     {
-        cout << "Aucune piece sur cette case" << endl;
+        if (DEBUG)
+            cout << "Aucune piece sur cette case" << endl;
         return true;
     }
     if(p1->isWhite()==true && p.isWhite()==true)
@@ -184,7 +189,8 @@ bool Echiquier::caseLibre(Piece &p, int x, int y)
     }
     else
     {
-        cout << "Piece adverse, prise possible" << endl;
+        if (DEBUG)
+            cout << "Piece adverse, prise possible" << endl;
         return true;
     }
 }
@@ -214,12 +220,13 @@ bool Echiquier::prise(Piece *eater, int x, int y)
                 cout << "Vous ne pouvez pas prendre une piece de votre couleur !"<<endl;
                 return false;
             }
-            cout << "La piece suivante a ete supprimee."<<endl;
+            cout << "La piece decrite ci-dessous a ete supprimee."<<endl;
             eatMe->affiche();
             return true;
         }
     }
-    cout << "Aucune piece n'a ete supprimee" << endl;
+    if (DEBUG)
+        cout << "Aucune piece n'a ete supprimee" << endl;
     return true;
 }
 

@@ -1,8 +1,6 @@
 #if !defined testPiece_h
 #define testPiece_h
 
-
-// Utile pour l'affichage
 #include <iostream>
 #include <stdlib.h>
 #include <limits>
@@ -21,5 +19,7 @@
 #include "Tour.h"
 #include "Fou.h"
 #include "Pion.h"
+
+#include "debug.h"
 
 #endif // testPiece_h

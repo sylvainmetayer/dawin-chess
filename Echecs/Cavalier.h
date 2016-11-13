@@ -2,6 +2,7 @@
 #define Cavalier_h
 
 #include "Piece.h"
+#include "debug.h"
 class Echiquier;
 // #include "Echiquier.h" problème de référence croisée
 

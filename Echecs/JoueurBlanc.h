@@ -3,6 +3,7 @@
 
 #include "Joueur.h"
 #include <iostream>
+#include "debug.h"
 
 class JoueurBlanc : public Joueur
 {

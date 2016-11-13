@@ -13,7 +13,8 @@ Piece::Piece() {}
 
 Piece::~Piece()
 {
-    cout << "Destruction Piece" << endl;
+    if (DEBUG)
+        cout << "Destruction Piece" << endl;
 }
 
 Piece::Piece( int x, int y, bool white )
