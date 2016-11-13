@@ -48,16 +48,6 @@ Joueur::~Joueur()
         cout << "Destruction Joueur" << endl;
 }
 
-void Joueur::affiche()
-{
-    vector<Piece *>::iterator p = m_pieces.begin();
-
-    while (p != m_pieces.end())
-    {
-        (*p)->affiche();
-        p++;
-    }
-}
 
 void Joueur::placerPieces(Echiquier &e)
 {
@@ -87,7 +77,8 @@ void Joueur::setOnChess(bool onChess)
     this->onChess = onChess;
 }
 
-vector<Piece*> Joueur::getPieces() {
+vector<Piece*> Joueur::getPieces()
+{
     return this->m_pieces;
 }
 

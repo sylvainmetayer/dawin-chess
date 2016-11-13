@@ -39,12 +39,7 @@ Piece & Piece::operator=( const Piece & autre)
     return *this;
 }
 
-void Piece::init( int x, int y, bool white )
-{
-    m_x = x;
-    m_y = y;
-    m_white = white;
-}
+
 
 void Piece::move( int x, int y )
 {

@@ -9,7 +9,8 @@ Roi::Roi(bool white) : Piece(5,white ? 1:8, white) {}
 
 bool Roi::mouvementValide(Echiquier &e, int x, int y)
 {
-    if ((x<9 && x>0 && y<9 && y>0) == false) {
+    if ((x<9 && x>0 && y<9 && y>0) == false)
+    {
         return false;
     }
 
@@ -32,7 +33,8 @@ void Roi::roque(bool left)
     cout <<"roque de" << (left ? "gauche":"droit")<< " de Roi"<<endl;
 }
 
-bool Roi::deplacementOK(Echiquier &e, int x, int y) {
+bool Roi::deplacementOK(Echiquier &e, int x, int y)
+{
 
     int _x = this->m_x; // Position de la piece
     int _y = this->m_y;
@@ -40,11 +42,12 @@ bool Roi::deplacementOK(Echiquier &e, int x, int y) {
     bool depOK;
 
     if(( ((x == _x -1) || (x == _x + 1) ) && ( y == _y ) )
-       || ( ((x == _x -1) || (x == _x + 1) ) && ( (y == _y - 1) || (y == _y + 1) ))
-       || ( ( (y == _y - 1) || (y == _y + 1)) && (x == _x)) ) {
+            || ( ((x == _x -1) || (x == _x + 1) ) && ( (y == _y - 1) || (y == _y + 1) ))
+            || ( ( (y == _y - 1) || (y == _y + 1)) && (x == _x)) )
+    {
         depOK = true;
-       }
-       else
+    }
+    else
         depOK = false;
 
     return depOK;

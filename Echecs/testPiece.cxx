@@ -8,8 +8,15 @@
 
 using namespace std;
 
-// http://cpp.developpez.com/faq/cpp/?page=Manipulation-de-la-console#Comment-verifier-les-valeurs-saisies-avec-cin
-// Fonction tirée du site ci-dessus pour assurer une saisie sécurisée.
+/**
+* Fonction de saisie sécurisée, afin de s'assurer que le
+* jeu ne crashe pas si l'on saisit autre chose qu'un entier.
+* La saisie est autorisée s'il s'agit d'un nombre entre 1 et 8
+* @param n Le nombre qui contiendra le résultat de la saisie.
+* Cette fonction est tirée du site ci-dessous.
+* @see http://cpp.developpez.com/faq/cpp/?page=Manipulation-de-la-console#Comment-verifier-les-valeurs-saisies-avec-cin
+* @return true ou false selon que la saisie est réussie ou non.
+*/
 bool read_choice( int & N )
 {
     while ( ! ( cin >> N ) || N < 1 || N > 8 )
@@ -30,7 +37,7 @@ bool read_choice( int & N )
             cout << "Le chiffre n'est pas entre 1 et 8, recommencez : ";
         }
     }
-    return true; // succès
+    return true;
 }
 
 /**
@@ -84,7 +91,8 @@ void handleChess(Echiquier &e, Joueur &joueur, Joueur &autreJoueur)
         cout << "Le deplacement a echoue (deplacement non valide ou impossible)." << endl;
     }
 
-    if (e.chess(autreJoueur, joueur, e.getKing(whiteTurn)->x(), e.getKing(!whiteTurn)->y() ) == true )  {
+    if (e.chess(autreJoueur, joueur, e.getKing(whiteTurn)->x(), e.getKing(!whiteTurn)->y() ) == true )
+    {
         joueur.setChessMat(true);
     }
 }
@@ -117,7 +125,8 @@ int main( int argc, char** argv )
         cout << "---------" << endl;
         cout << "Tour joueur " << (tourJoueurBlanc ? "blanc" : "noir") << endl;
 
-        if (DEBUG) {
+        if (DEBUG)
+        {
             cout << "Etat du jeu" << endl;
             cout << "Tour " << (tourJoueurBlanc == true ? "BLANC" : "NOIR") << endl;
             cout << "JB chessMat" << (jb.getChessMat() == true ? "O":"N") << endl;

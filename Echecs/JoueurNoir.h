@@ -16,9 +16,13 @@
 
 class JoueurNoir : public Joueur
 {
-    public:
-        JoueurNoir();
-        bool isWhite();
+public:
+    JoueurNoir();
+
+    /**
+    * Methode qui permet de savoir si le joueur est le joueur blanc.
+    */
+    bool isWhite();
 };
 
 #endif

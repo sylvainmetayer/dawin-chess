@@ -7,9 +7,13 @@
 
 class JoueurBlanc : public Joueur
 {
-    public:
-        JoueurBlanc();
-        bool isWhite();
+public:
+    JoueurBlanc();
+
+    /**
+    * Methode qui permet de savoir si le joueur est le joueur blanc.
+    */
+    bool isWhite();
 };
 
 #endif // JOUEURBLANC_H_INCLUDED

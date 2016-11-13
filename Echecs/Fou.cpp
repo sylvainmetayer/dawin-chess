@@ -104,14 +104,6 @@ char Fou::myChar()
     return m_white ? 'F' : 'f';
 }
 
-/**
- * Recupere la piece situee sur une case.
- * @param Echiquier
- * @param x un entier entre 1 et 8
- * @param y un entier entre 1 et 8
- *
- * @return true si le deplacement et possible, false si non
- */
 bool Fou::deplacementOK(Echiquier &e, int x, int y)
 {
     int _x = this->m_x; // Position de la piece
