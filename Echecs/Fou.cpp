@@ -50,7 +50,7 @@ bool Fou::deplacementOK(Echiquier &e, int x, int y)
     if( _x < x && _y < y)   // test diagonal bas droit
     {
         tmpY = _y;
-        for(i = (_x + 1); i < 9; i++)
+        for(i = (_x + 1); i < (_y - 1); i++)
         {
             tmpY = tmpY +1;
             if(e.getPiece(x,tmpY) != 0)
@@ -64,7 +64,7 @@ bool Fou::deplacementOK(Echiquier &e, int x, int y)
     if( _x > x && _y < y)   // test diagonal bas gauche
     {
         tmpY = _y;
-        for(i = (_x - 1); i < 0; i--)
+        for(i = (_x - 1); i < (_y + 1); i--)
         {
             tmpY = tmpY +1;
             if(e.getPiece(x,tmpY) != 0)
@@ -79,7 +79,7 @@ bool Fou::deplacementOK(Echiquier &e, int x, int y)
     {
 
         tmpY = _y;
-        for(i = (_x - 1); i < 0; i--)
+        for(i = (_x - 1); i < (_y -1); i--)
         {
             tmpY = tmpY - 1;
             if(e.getPiece(x,tmpY) != 0)
@@ -94,7 +94,7 @@ bool Fou::deplacementOK(Echiquier &e, int x, int y)
     {
 
         tmpY = _y;
-        for(i = (_x + 1); i < 9; i++)
+        for(i = (_x + 1); i < (_y -1); i++)
         {
             tmpY = tmpY - 1;
             if(e.getPiece(x,tmpY) != 0)
