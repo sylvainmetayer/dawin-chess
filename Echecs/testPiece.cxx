@@ -188,42 +188,30 @@ int main( int argc, char** argv )
                 tourOK = true;
 
                 // Tout cela est inutile puisque vérifier au début de tour ?
-                /*if(piece->isWhite() == true)
+                if(piece->isWhite() == true)
                 {
                     Piece* otherKing = e.getKing(false);
                     int x_king = otherKing->x();
                     int y_king = otherKing->y();
                     e.chess(jb, jn, x_king, y_king );
-
-                    if(jn.onChess == true)
-                    {
-
-                    }
                 }
                 else if(piece->isBlack() == true)
                 {
                     Piece* otherKing = e.getKing(true);
                     int x_king = otherKing->x();
                     int y_king = otherKing->y();
-                    e.chess(&jn, &jb, x_king, y_king);
+                    e.chess(jn, jb, x_king, y_king);
                 }
                 else
                 {
                     cout << "Erreur "<<endl;
                     exit(1);
-                }*/
+                }
             }
 
+            // Le tour s'est bien passé, joueur suivant !
             if (tourOK)
             {
-                gameOver = e.gameOver();
-                if (gameOver != 0)
-                {
-                    cout << "Bravo Joueur " << (gameOver == 1 ? "Blanc":"Noir") <<", tu as gagne !"<<endl;
-                    exit(0);
-                }
-
-                // Le tour s'est bien passé, joueur suivant !
                 tourJb = !tourJb;
             }
             else

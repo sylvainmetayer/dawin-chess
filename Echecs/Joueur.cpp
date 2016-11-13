@@ -4,22 +4,17 @@
 
 using namespace std;
 
-Joueur::Joueur()
-{
-    //cout << "Construction Joueur par defaut" << endl;
-}
+Joueur::Joueur() {}
 
 Joueur::Joueur(bool white)
 {
 
-    this->onChess = false;
-    this->chessMat = false;
-    //cout << "constructeur specialise joueur" <<endl;
+    this->setOnChess(false);
+    this->setChessMat(false);
 
     Roi *r = new Roi(white);
     m_pieces.push_back(r);
 
-    // De même pour les pions, reine, cavalier, ...
     Reine *q = new Reine(white);
     m_pieces.push_back(q);
 
@@ -50,7 +45,6 @@ Joueur::Joueur(bool white)
 
 Joueur::~Joueur()
 {
-    // TODO penser à gérer les delete
     cout << "Destruction Joueur" << endl;
 }
 
