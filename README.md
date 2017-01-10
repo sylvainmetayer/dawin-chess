@@ -2,7 +2,7 @@
 
 ## Tiphaine GIRARDOT - Sylvain METAYER
 
-## LP DAWIN Alt - Année 2016-2016
+## LP DAWIN Alt - Année 2016-2017
 
 Le jeu est jouable en console, une fois compilé. 
 
